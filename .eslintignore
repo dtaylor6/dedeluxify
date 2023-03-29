@@ -1,0 +1,6 @@
+.git/
+build/
+.env
+
+.eslintrc.js
+webpack.config.js
