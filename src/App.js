@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react' // we need this now also in component files
-import SpotifyPlayer from './components/Spotify/SpotifyPlayer'
-import SpotifyLoginPage from './components/Spotify/SpotifyLoginPage'
+import SpotifyPlayer from './components/SpotifyPlayer/SpotifyPlayer'
+import SpotifyLogin from './components/SpotifyLogin/SpotifyLogin'
 import {
   BrowserRouter,
   Routes,
@@ -32,7 +32,7 @@ const LoginOrPlayer = (props) => {
 
   return (
     <>
-      <SpotifyLoginPage />
+      <SpotifyLogin />
     </>
   )
 }
