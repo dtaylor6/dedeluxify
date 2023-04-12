@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import StyledSpotifyPlayer from './SpotifyPlayer.style'
+import {
+  StyledSpotifyContainer,
+  StyledSpotifyWrapper,
+  StyledNowPlayingCover,
+  StyledNowPlayingSide,
+  StyledNowPlayingName,
+  StyledNowPlayingArtist,
+  StyledSpotifyButton
+} from './SpotifyPlayer.style'
 
-const track = {
+export const track = {
   name: '',
   album: {
     images: [
@@ -13,7 +21,7 @@ const track = {
   ]
 }
 
-const SpotifyPlayer = (props) => {
+export const SpotifyPlayer = (props) => {
   const [isPaused, setPaused] = useState(false)
   const [isActive, setActive] = useState(false)
   const [player, setPlayer] = useState(undefined)
@@ -68,44 +76,42 @@ const SpotifyPlayer = (props) => {
 
   if (!isActive) {
     return (
-      <StyledSpotifyPlayer>
-        <div className="container">
-          <div className="main-wrapper">
+      <>
+        <StyledSpotifyContainer>
+          <StyledSpotifyWrapper>
             <b> Instance not active. Transfer your playback using your Spotify app </b>
-          </div>
-        </div>
-      </StyledSpotifyPlayer>
+          </StyledSpotifyWrapper>
+        </StyledSpotifyContainer>
+      </>
     )
   }
   else {
     return (
-      <StyledSpotifyPlayer>
-        <div className="container">
-          <div className="main-wrapper">
+      <>
+        <StyledSpotifyContainer>
+          <StyledSpotifyWrapper>
 
-            <img src={currentTrack.album.images[0].url} className="now-playing__cover" alt="" />
+            <StyledNowPlayingCover src={currentTrack.album.images[0].url} alt="" />
 
-            <div className="now-playing__side">
-              <div className="now-playing__name">{currentTrack.name}</div>
-              <div className="now-playing__artist">{currentTrack.artists[0].name}</div>
+            <StyledNowPlayingSide>
+              <StyledNowPlayingName>{currentTrack.name}</StyledNowPlayingName>
+              <StyledNowPlayingArtist>{currentTrack.artists[0].name}</StyledNowPlayingArtist>
 
-              <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
-                                &lt;&lt;
-              </button>
+              <StyledSpotifyButton onClick={() => { player.previousTrack() }} >
+                &lt;&lt;
+              </StyledSpotifyButton>
 
-              <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
+              <StyledSpotifyButton onClick={() => { player.togglePlay() }} >
                 { isPaused ? 'PLAY' : 'PAUSE' }
-              </button>
+              </StyledSpotifyButton>
 
-              <button className="btn-spotify" onClick={() => { player.nextTrack() }} >
-                                &gt;&gt;
-              </button>
-            </div>
-          </div>
-        </div>
-      </StyledSpotifyPlayer>
+              <StyledSpotifyButton onClick={() => { player.nextTrack() }} >
+                &gt;&gt;
+              </StyledSpotifyButton>
+            </StyledNowPlayingSide>
+          </StyledSpotifyWrapper>
+        </StyledSpotifyContainer>
+      </>
     )
   }
 }
-
-export default SpotifyPlayer

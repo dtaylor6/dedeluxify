@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react' // we need this now also in component files
-import SpotifyPlayer from './components/SpotifyPlayer/SpotifyPlayer'
+import { SpotifyPlayer } from './components/SpotifyPlayer/SpotifyPlayer'
 import SpotifyLogin from './components/SpotifyLogin/SpotifyLogin'
 import {
   BrowserRouter,
