@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SpotifyLoginPage = () => {
+const SpotifyLogin = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -12,4 +12,4 @@ const SpotifyLoginPage = () => {
   )
 }
 
-export default SpotifyLoginPage
+export default SpotifyLogin

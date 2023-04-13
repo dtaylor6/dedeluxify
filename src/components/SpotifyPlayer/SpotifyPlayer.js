@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import {
   StyledSpotifyContainer,
   StyledSpotifyWrapper,
@@ -8,6 +10,7 @@ import {
   StyledNowPlayingArtist,
   StyledSpotifyButton
 } from './SpotifyPlayer.style'
+
 
 export const track = {
   name: '',
@@ -21,11 +24,12 @@ export const track = {
   ]
 }
 
-export const SpotifyPlayer = (props) => {
+const SpotifyPlayer = (props) => {
   const [isPaused, setPaused] = useState(false)
   const [isActive, setActive] = useState(false)
   const [player, setPlayer] = useState(undefined)
   const [currentTrack, setTrack] = useState(track)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -64,6 +68,12 @@ export const SpotifyPlayer = (props) => {
           (!state)? setActive(false) : setActive(true)
         })
       }))
+
+      player.on('authentication_error', ({ message }) => {
+        console.error('Failed to authenticate:', message)
+        window.localStorage.removeItem('spotify-auth-token')
+        navigate('/')
+      })
 
       player.connect()
     }
@@ -115,3 +125,5 @@ export const SpotifyPlayer = (props) => {
     )
   }
 }
+
+export default SpotifyPlayer
