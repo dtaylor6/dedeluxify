@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { TransferPlayback } from '../../services/SpotifyPlaybackService'
 import {
   StyledSpotifyContainer,
   StyledSpotifyWrapper,
@@ -50,6 +51,7 @@ const SpotifyPlayer = (props) => {
 
       player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id)
+        TransferPlayback(device_id)
       })
 
       player.addListener('not_ready', ({ device_id }) => {
@@ -89,7 +91,7 @@ const SpotifyPlayer = (props) => {
       <>
         <StyledSpotifyContainer>
           <StyledSpotifyWrapper>
-            <b> Instance not active. Transfer your playback using your Spotify app </b>
+            <b> Loading player... </b>
           </StyledSpotifyWrapper>
         </StyledSpotifyContainer>
       </>

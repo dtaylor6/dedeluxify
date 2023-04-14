@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 
 import SpotifyLogin from '../SpotifyLogin/SpotifyLogin'
@@ -12,7 +12,10 @@ const LoginRedirect = (props) => {
   // Spotify auth token passed in from url params
   if (access_token) {
     window.localStorage.setItem('spotify-auth-token', access_token)
-    navigate('/')
+    useEffect(() => {
+      navigate('/')
+    }, [])
+
     return (
       <>
         <b>Loading playback...</b>
