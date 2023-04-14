@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { TransferPlayback } from '../../services/SpotifyPlaybackService'
+import { ClearToken } from '../../services/SpotifyAuthService'
 import {
   StyledSpotifyContainer,
   StyledSpotifyWrapper,
@@ -73,7 +74,7 @@ const SpotifyPlayer = (props) => {
 
       player.on('authentication_error', ({ message }) => {
         console.error('Failed to authenticate:', message)
-        window.localStorage.removeItem('spotify-auth-token')
+        ClearToken()
         navigate('/')
       })
 
