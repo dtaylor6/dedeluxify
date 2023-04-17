@@ -22,6 +22,11 @@ const config = () => {
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'babel-loader'
+        },
+        {
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/,
+          use: [{ loader: '@svgr/webpack', options: { icon: true } }]
         }
       ]
     }

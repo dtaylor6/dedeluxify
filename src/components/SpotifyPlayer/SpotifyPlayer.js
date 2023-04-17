@@ -4,17 +4,21 @@ import { useNavigate } from 'react-router-dom'
 import { TransferPlayback } from '../../services/SpotifyPlaybackService'
 import { ClearToken } from '../../services/SpotifyAuthService'
 import {
-  StyledSpotifyContainer,
-  StyledSpotifyWrapper,
-  StyledNowPlayingCover,
-  StyledNowPlayingSide,
-  StyledNowPlayingName,
-  StyledNowPlayingArtist,
-  StyledSpotifyButton
+  PlayerContainer,
+  StyledPlayerWrapper,
+  NowPlayingCover,
+  NowPlayingSide,
+  NowPlayingName,
+  NowPlayingArtist,
+  StyledTrackButton,
+  StyledPlayButton
 } from './SpotifyPlayer.style'
+import NextIcon from '../../../images/next-button.svg'
+import PreviousIcon from '../../../images/previous-button.svg'
+import PlayIcon from '../../../images/play-button.svg'
+import PauseIcon from '../../../images/pause-button.svg'
 
-
-export const track = {
+const track = {
   name: '',
   album: {
     images: [
@@ -75,7 +79,7 @@ const SpotifyPlayer = (props) => {
       player.on('authentication_error', ({ message }) => {
         console.error('Failed to authenticate:', message)
         ClearToken()
-        navigate('/')
+        navigate('/login')
       })
 
       player.connect()
@@ -87,46 +91,69 @@ const SpotifyPlayer = (props) => {
     }
   }, [])
 
-  if (!isActive) {
+  return (
+    <>
+      <PlayerContainer>
+        <PlayerWrapper
+          isPaused={isPaused}
+          isActive={isActive}
+          player={player}
+          currentTrack={currentTrack}
+        />
+      </PlayerContainer>
+    </>
+  )
+}
+
+const PlayerWrapper = (props) => {
+  if (!props.isActive) {
     return (
-      <>
-        <StyledSpotifyContainer>
-          <StyledSpotifyWrapper>
-            <b> Loading player... </b>
-          </StyledSpotifyWrapper>
-        </StyledSpotifyContainer>
-      </>
+      <StyledPlayerWrapper>
+        <b>Loading player...</b>
+      </StyledPlayerWrapper>
     )
   }
-  else {
-    return (
-      <>
-        <StyledSpotifyContainer>
-          <StyledSpotifyWrapper>
 
-            <StyledNowPlayingCover src={currentTrack.album.images[0].url} alt="" />
+  return (
+    <StyledPlayerWrapper>
+      <NowPlayingCover src={props.currentTrack.album.images[0].url} alt="" />
 
-            <StyledNowPlayingSide>
-              <StyledNowPlayingName>{currentTrack.name}</StyledNowPlayingName>
-              <StyledNowPlayingArtist>{currentTrack.artists[0].name}</StyledNowPlayingArtist>
+      <NowPlayingSide>
+        <NowPlayingName>{props.currentTrack.name}</NowPlayingName>
+        <NowPlayingArtist>{props.currentTrack.artists[0].name}</NowPlayingArtist>
 
-              <StyledSpotifyButton onClick={() => { player.previousTrack() }} >
-                &lt;&lt;
-              </StyledSpotifyButton>
+        <PreviousButton onClick={() => { props.player.previousTrack() }} />
 
-              <StyledSpotifyButton onClick={() => { player.togglePlay() }} >
-                { isPaused ? 'PLAY' : 'PAUSE' }
-              </StyledSpotifyButton>
+        <PlayButton onClick={() => { props.player.togglePlay() }} isPaused={props.isPaused} />
 
-              <StyledSpotifyButton onClick={() => { player.nextTrack() }} >
-                &gt;&gt;
-              </StyledSpotifyButton>
-            </StyledNowPlayingSide>
-          </StyledSpotifyWrapper>
-        </StyledSpotifyContainer>
-      </>
-    )
-  }
+        <NextButton onClick={() => { props.player.nextTrack() }} />
+      </NowPlayingSide>
+    </StyledPlayerWrapper>
+  )
+}
+
+const NextButton = (props) => {
+  return (
+    <StyledTrackButton onClick={props.onClick}>
+      <NextIcon />
+    </StyledTrackButton>
+  )
+}
+
+const PreviousButton = (props) => {
+  return (
+    <StyledTrackButton onClick={props.onClick}>
+      <PreviousIcon />
+    </StyledTrackButton>
+  )
+}
+
+const PlayButton = (props) => {
+  return (
+    <StyledPlayButton onClick={props.onClick}>
+      { props.isPaused ? <PlayIcon /> : <PauseIcon /> }
+    </StyledPlayButton>
+  )
 }
 
 export default SpotifyPlayer

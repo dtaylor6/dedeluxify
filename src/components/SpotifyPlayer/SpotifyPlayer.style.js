@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 
-export const StyledSpotifyContainer = styled.div`
+export const PlayerContainer = styled.div`
+  height: auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0%;
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 100%;
 `
 
-export const StyledSpotifyWrapper = styled.div`
-  padding-top: 45px;
+export const StyledPlayerWrapper = styled.div`
+  padding-bottom: 2%;
   align-items: center;
   display: flex;
   height: 100%;
@@ -18,7 +21,7 @@ export const StyledSpotifyWrapper = styled.div`
   width: 80%;
   z-index: 1;
 `
-export const StyledNowPlayingCover = styled.img`
+export const NowPlayingCover = styled.img`
   border-radius: 8px;
   float: left;
   margin-right: 10px;
@@ -27,34 +30,41 @@ export const StyledNowPlayingCover = styled.img`
   height: 150px;
 `
 
-export const StyledNowPlayingSide = styled.div`
+export const NowPlayingSide = styled.div`
   margin-left: 2%;
   width: 45%;
 `
 
-export const StyledNowPlayingName = styled.div`
+export const NowPlayingName = styled.div`
   font-size: 1.5em;
   margin-bottom: 0.2em;
 `
 
-export const StyledNowPlayingArtist = styled.div`
+export const NowPlayingArtist = styled.div`
   margin-bottom: 0.2em;
 `
-export const StyledSpotifyButton = styled.button`
-  background-color:#44c767;
-  border-radius:28px;
-  border:1px solid #18ab29;
-  display:inline-block;
+export const StyledTrackButton = styled.button`
+  display:inline-block;  
   cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:17px;
-  padding:16px 31px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #2f6627;
+  border: none;
+  height: 4rem;
+  width: 4rem;
+  padding: 0 0;
+  background: none;
+  
 
   &:active {
     position:relative;
     top:1px;
   }
+`
+
+export const StyledPlayButton = styled.button`
+  display:inline-block;  
+  cursor:pointer;
+  border: none;
+  height: 4rem;
+  width: 4rem;
+  padding: 0 0;
+  background: none;
 `
