@@ -5,7 +5,8 @@ import { TransferPlayback } from '../../services/SpotifyPlaybackService'
 import { ClearToken } from '../../services/SpotifyAuthService'
 import {
   PlayerContainer,
-  StyledPlayerWrapper,
+  StyledTrackWrapper,
+  StyledButtonWrapper,
   NowPlayingCover,
   NowPlayingSide,
   NowPlayingName,
@@ -94,41 +95,50 @@ const SpotifyPlayer = (props) => {
   return (
     <>
       <PlayerContainer>
-        <PlayerWrapper
+        <TrackWrapper
           isPaused={isPaused}
           isActive={isActive}
           player={player}
           currentTrack={currentTrack}
+        />
+        <ButtonWrapper
+          isPaused={isPaused}
+          isActive={isActive}
+          player={player}
         />
       </PlayerContainer>
     </>
   )
 }
 
-const PlayerWrapper = (props) => {
+const TrackWrapper = (props) => {
   if (!props.isActive) {
     return (
-      <StyledPlayerWrapper>
+      <StyledTrackWrapper>
         <b>Loading player...</b>
-      </StyledPlayerWrapper>
+      </StyledTrackWrapper>
     )
   }
 
   return (
-    <StyledPlayerWrapper>
+    <StyledTrackWrapper>
       <NowPlayingCover src={props.currentTrack.album.images[0].url} alt="" />
 
       <NowPlayingSide>
         <NowPlayingName>{props.currentTrack.name}</NowPlayingName>
         <NowPlayingArtist>{props.currentTrack.artists[0].name}</NowPlayingArtist>
-
-        <PreviousButton onClick={() => { props.player.previousTrack() }} />
-
-        <PlayButton onClick={() => { props.player.togglePlay() }} isPaused={props.isPaused} />
-
-        <NextButton onClick={() => { props.player.nextTrack() }} />
       </NowPlayingSide>
-    </StyledPlayerWrapper>
+    </StyledTrackWrapper>
+  )
+}
+
+const ButtonWrapper = (props) => {
+  return (
+    <StyledButtonWrapper>
+      <PreviousButton onClick={() => { props.player.previousTrack() }} />
+      <PlayButton onClick={() => { props.player.togglePlay() }} isPaused={props.isPaused} />
+      <NextButton onClick={() => { props.player.nextTrack() }} />
+    </StyledButtonWrapper>
   )
 }
 

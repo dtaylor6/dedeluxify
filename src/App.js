@@ -10,14 +10,16 @@ import Home from './components/Home/Home'
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<LoginRedirect />} />
-        </Routes>
-      </>
-    </BrowserRouter>
+    <div style={{ position: 'absolute', left: '0px', width: '100%', overflow: 'hidden' }}>
+      <BrowserRouter>
+        <>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<LoginRedirect />} />
+          </Routes>
+        </>
+      </BrowserRouter>
+    </div>
   )
 }
 
