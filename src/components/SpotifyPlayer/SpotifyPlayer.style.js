@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import ScrollingText from '../ScrollingText/ScrollingText'
+//import ScrollingText from '../ScrollingText/ScrollingText'
 
 export const PlayerContainer = styled.div`
   height: 6rem;
