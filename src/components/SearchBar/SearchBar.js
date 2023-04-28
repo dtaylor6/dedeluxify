@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { SearchAlbums } from '../../services/SpotifyPlaybackService'
-import { StyledSearchInput } from './SearchBar.style'
+import { StyledSearchBar, StyledSearchInput } from './SearchBar.style'
 
 const SearchBar = (props) => {
   return (
-    <>
+    <StyledSearchBar>
       <SearchInput />
-    </>
+    </StyledSearchBar>
   )
 }
 
