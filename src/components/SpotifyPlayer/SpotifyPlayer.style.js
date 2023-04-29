@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-//import ScrollingText from '../ScrollingText/ScrollingText'
-
 export const PlayerContainer = styled.div`
   height: 6rem;
   width: 100%;
@@ -52,7 +50,8 @@ export const NowPlayingSide = styled.div`
 `
 
 export const NowPlayingName = styled.div`
-  font-size: 1em;
+  font-size: 1rem;
+  font-weight: bold;
   margin-bottom: 0.2em;
   margin-right: 0;
   overflow: hidden;
@@ -62,6 +61,7 @@ export const NowPlayingName = styled.div`
 
 export const NowPlayingArtist = styled.div`
   margin-bottom: 0.2rem;
+  font-size: 1rem;
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;

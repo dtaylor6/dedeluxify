@@ -125,8 +125,12 @@ const TrackWrapper = (props) => {
       <NowPlayingCover src={props.currentTrack.album.images[0].url} alt="" />
 
       <NowPlayingSide>
-        <NowPlayingName>{props.currentTrack.name}</NowPlayingName>
-        <NowPlayingArtist>{props.currentTrack.artists[0].name}</NowPlayingArtist>
+        <NowPlayingName title={props.currentTrack.name}>
+          {props.currentTrack.name}
+        </NowPlayingName>
+        <NowPlayingArtist title={`${props.currentTrack.artists[0].name} | ${props.currentTrack.album.name}`}>
+          {props.currentTrack.artists[0].name} | {props.currentTrack.album.name}
+        </NowPlayingArtist>
       </NowPlayingSide>
     </StyledTrackWrapper>
   )
@@ -144,7 +148,7 @@ const ButtonWrapper = (props) => {
 
 const NextButton = (props) => {
   return (
-    <StyledTrackButton onClick={props.onClick}>
+    <StyledTrackButton onClick={props.onClick} title='Next'>
       <NextIcon />
     </StyledTrackButton>
   )
@@ -152,15 +156,17 @@ const NextButton = (props) => {
 
 const PreviousButton = (props) => {
   return (
-    <StyledTrackButton onClick={props.onClick}>
+    <StyledTrackButton onClick={props.onClick} title='Previous'>
       <PreviousIcon />
     </StyledTrackButton>
   )
 }
 
 const PlayButton = (props) => {
+  const title = props.isPaused ? 'Play' : 'Pause'
+
   return (
-    <StyledPlayButton onClick={props.onClick}>
+    <StyledPlayButton onClick={props.onClick} title={title}>
       { props.isPaused ? <PlayIcon /> : <PauseIcon /> }
     </StyledPlayButton>
   )

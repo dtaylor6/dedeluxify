@@ -5,7 +5,7 @@ import { StyledSearchBar, StyledSearchInput } from './SearchBar.style'
 
 const SearchBar = (props) => {
   return (
-    <StyledSearchBar>
+    <StyledSearchBar title='Search'>
       <SearchInput />
     </StyledSearchBar>
   )
