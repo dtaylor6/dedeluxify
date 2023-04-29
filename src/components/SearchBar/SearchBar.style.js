@@ -5,7 +5,7 @@ export const StyledSearchBar = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 6rem;
+  height: 5rem;
   position: fixed;
   top: 0%;
 `

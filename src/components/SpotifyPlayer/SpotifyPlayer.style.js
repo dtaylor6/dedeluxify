@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const PlayerContainer = styled.div`
-  height: 6rem;
+  height: 5rem;
   width: 100%;
   position: fixed;
   bottom: 0%;
@@ -67,7 +67,7 @@ export const NowPlayingArtist = styled.div`
   white-space: nowrap;
 `
 export const StyledTrackButton = styled.button`
-  cursor:pointer;
+  cursor: pointer;
   border: none;
   height: 3rem;
   width: 3rem;
@@ -81,7 +81,7 @@ export const StyledTrackButton = styled.button`
 `
 
 export const StyledPlayButton = styled.button`
-  cursor:pointer;
+  cursor: pointer;
   border: none;
   height: 3rem;
   width: 3rem;

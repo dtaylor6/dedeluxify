@@ -1,16 +1,17 @@
 import React from 'react'
-import LoginRedirect from './components/LoginRedirect/LoginRedirect'
+import LoginRedirect from '../LoginRedirect/LoginRedirect'
 import {
   BrowserRouter,
   Routes,
   Route
 } from 'react-router-dom'
 
-import Home from './components/Home/Home'
+import Home from '../Home/Home'
+import StyledApp from './App.style'
 
 const App = () => {
   return (
-    <div style={{ position: 'absolute', left: '0px', width: '100%', overflow: 'hidden' }}>
+    <StyledApp>
       <BrowserRouter>
         <>
           <Routes>
@@ -19,7 +20,7 @@ const App = () => {
           </Routes>
         </>
       </BrowserRouter>
-    </div>
+    </StyledApp>
   )
 }
 
