@@ -25,7 +25,8 @@ export const StyledTrackWrapper = styled.div`
   text-align: center;
   display: inline-block;
   min-width: 0;
-  height: 100%;
+  height: auto;
+  margin-left: 1%;
   position: relative;
   z-index: 1;
 `
@@ -41,9 +42,9 @@ export const StyledButtonWrapper = styled.div`
 export const NowPlayingCover = styled.img`
   border-radius: 0.5em;
   float: left;
-
-  width: 5em;
-  height: 5em;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 0.5rem;
 `
 
 export const NowPlayingSide = styled.div`
@@ -55,21 +56,21 @@ export const NowPlayingName = styled.div`
   margin-bottom: 0.2em;
   margin-right: 0;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
 `
 
 export const NowPlayingArtist = styled.div`
   margin-bottom: 0.2rem;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
 `
 export const StyledTrackButton = styled.button`
   cursor:pointer;
   border: none;
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   padding: 0 0;
   background: none;
 
@@ -82,8 +83,8 @@ export const StyledTrackButton = styled.button`
 export const StyledPlayButton = styled.button`
   cursor:pointer;
   border: none;
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   padding: 0 0;
   background: none;
   margin: 0 1rem;
