@@ -15,6 +15,7 @@ export const PlayerContainer = styled.div`
 
   &:after {
     flex: 1;
+    min-width: 0;
     content: '';
   }
 `
@@ -23,17 +24,17 @@ export const StyledTrackWrapper = styled.div`
   flex: 1;
   text-align: center;
   display: inline-block;
+  min-width: 0;
   height: 100%;
-  justify-content: center;
   position: relative;
   z-index: 1;
 `
 export const StyledButtonWrapper = styled.div`
   flex: 1;
-  min-width: 
   display: flex;
   text-align: center;
-  min-width: 20em;
+  justify-content: center;
+  min-width: auto;
   white-space: nowrap;
 `
 

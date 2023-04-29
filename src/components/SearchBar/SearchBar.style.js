@@ -15,7 +15,7 @@ export const StyledSearchInput = styled.input`
   position: center;
   border-radius: 0.25rem;
   height: 4rem;
-  font-size
+  font-size: 100%;
 `
 
 export const Result = styled.p`
