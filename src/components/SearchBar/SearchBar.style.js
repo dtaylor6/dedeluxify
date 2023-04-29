@@ -14,7 +14,8 @@ export const StyledSearchInput = styled.input`
   min-width: 50%;
   position: center;
   border-radius: 0.25rem;
-  height: 4rem;
+  border-width: thin;
+  height: 2rem;
   font-size: 100%;
 `
 

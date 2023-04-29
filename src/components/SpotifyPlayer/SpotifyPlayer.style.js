@@ -8,7 +8,7 @@ export const PlayerContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  border-top: 0.1rem solid;
+  border-top: thin solid;
   background-color: white;
 
   &:after {
