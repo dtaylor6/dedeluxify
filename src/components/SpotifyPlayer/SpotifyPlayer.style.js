@@ -52,7 +52,7 @@ export const NowPlayingSide = styled.div`
 `
 
 export const NowPlayingName = styled.div`
-  font-size: 1.5em;
+  font-size: 1em;
   margin-bottom: 0.2em;
   margin-right: 0;
   overflow: hidden;
@@ -87,5 +87,5 @@ export const StyledPlayButton = styled.button`
   width: 3rem;
   padding: 0 0;
   background: none;
-  margin: 0 1rem;
+  margin: 0 1em;
 `
