@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import useField from '../hooks/useField'
 import useSpotifySearch from '../hooks/useSpotifySearch'
-import { SearchAlbums } from '../../services/SpotifyPlaybackService'
-import { StyledSearchBar, StyledSearchInput } from './SearchBar.style'
+import {
+  StyledSearchBar,
+  StyledSearchInput,
+  StyledResult,
+  StyledResults } from './SearchBar.style'
 
 const SearchBar = (props) => {
   const [query, setQuery] = useState('')
@@ -23,21 +25,21 @@ const SearchBar = (props) => {
 }
 
 const SearchInput = (props) => {
-  return (
-    <StyledSearchInput type='search' onChange={props.onChange} />
-  )
+  return <StyledSearchInput type='search' onChange={props.onChange} />
 }
 
 const Results = (props) => {
-  console.log(props.results)
+  let index = 0
 
   return (
-    <p>Temp...</p>
+    <StyledResults>
+      { props.results && props.results.map(result => <Result result={result} key={++index} />)}
+    </StyledResults>
   )
 }
 
 const Result = (props) => {
-  
+  return <StyledResult>{props.result.name}</StyledResult>
 }
 
 // const Search = async (e) => {

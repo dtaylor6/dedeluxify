@@ -19,7 +19,11 @@ export const StyledSearchInput = styled.input`
   font-size: 100%;
 `
 
-export const Result = styled.p`
+export const StyledResults = styled.div`
+
+`
+
+export const StyledResult = styled.p`
 
 `
 

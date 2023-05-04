@@ -9,7 +9,7 @@ const useSpotifySearch = (query) => {
   useEffect(() => {
     const getQuery = async () => {
       const queryResult = await SearchAlbums(query)
-      setResults(queryResult)
+      setResults(queryResult.albums.items)
     }
     getQuery()
   }, [query])
