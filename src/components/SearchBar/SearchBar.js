@@ -4,6 +4,7 @@ import useSpotifySearch from '../hooks/useSpotifySearch'
 import {
   StyledSearchBar,
   StyledSearchInput,
+  SearchInputContainer,
   StyledResult,
   StyledResults } from './SearchBar.style'
 
@@ -18,7 +19,9 @@ const SearchBar = (props) => {
 
   return (
     <StyledSearchBar>
-      <SearchInput onChange={fetch} />
+      <SearchInputContainer>
+        <SearchInput onChange={fetch} />
+      </SearchInputContainer>
       <Results results={(query !== '') ? searchResults : undefined} />
     </StyledSearchBar>
   )
@@ -38,7 +41,7 @@ const Results = (props) => {
 }
 
 const Result = (props) => {
-  return <StyledResult>{props.result.name}</StyledResult>
+  return <StyledResult title={props.result.name}>{props.result.name}</StyledResult>
 }
 
 // const Search = async (e) => {
