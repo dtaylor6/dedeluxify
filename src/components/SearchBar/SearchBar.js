@@ -30,7 +30,6 @@ const SearchInput = (props) => {
 
 const Results = (props) => {
   let index = 0
-
   return (
     <StyledResults>
       { props.results && props.results.map(result => <Result result={result} key={++index} />)}

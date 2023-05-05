@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
 export const StyledSearchBar = styled.div`
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 5rem;
-  position: fixed;
   top: 0%;
 `
 
@@ -23,7 +22,7 @@ export const StyledResults = styled.div`
 
 `
 
-export const StyledResult = styled.p`
+export const StyledResult = styled.div`
 
 `
 

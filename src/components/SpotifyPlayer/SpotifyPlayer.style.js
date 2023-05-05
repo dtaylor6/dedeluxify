@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const PlayerContainer = styled.div`
   height: 5rem;
   width: 100%;
-  position: fixed;
-  bottom: 0%;
+  align-self: flex-end;
   align-items: center;
   display: flex;
   justify-content: space-between;
