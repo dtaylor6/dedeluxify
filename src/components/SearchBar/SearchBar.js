@@ -17,15 +17,15 @@ const SearchBar = (props) => {
   }
 
   return (
-    <StyledSearchBar title='Search'>
+    <StyledSearchBar>
       <SearchInput onChange={fetch} />
-      <Results results={searchResults} />
+      <Results results={(query !== '') ? searchResults : undefined} />
     </StyledSearchBar>
   )
 }
 
 const SearchInput = (props) => {
-  return <StyledSearchInput type='search' onChange={props.onChange} />
+  return <StyledSearchInput title='Search' type='search' onChange={props.onChange} />
 }
 
 const Results = (props) => {
