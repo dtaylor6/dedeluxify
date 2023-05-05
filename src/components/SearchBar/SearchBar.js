@@ -28,7 +28,7 @@ const SearchBar = (props) => {
 }
 
 const SearchInput = (props) => {
-  return <StyledSearchInput title='Search' type='search' onChange={props.onChange} />
+  return <StyledSearchInput title='Search' type='search' placeholder='Search' onChange={props.onChange} />
 }
 
 const Results = (props) => {
@@ -41,13 +41,11 @@ const Results = (props) => {
 }
 
 const Result = (props) => {
-  return <StyledResult title={props.result.name}>{props.result.name}</StyledResult>
+  return (
+    <StyledResult title={`${props.result.name} | ${props.result.artists[0].name}`}>
+      <b>{props.result.name}</b> | {props.result.artists[0].name}
+    </StyledResult>
+  )
 }
-
-// const Search = async (e) => {
-//   console.log(e.target.value)
-//   const result = await SearchAlbums(e.target.value)
-//   console.log(result)
-// }
 
 export default SearchBar
