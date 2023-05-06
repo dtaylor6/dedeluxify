@@ -23,6 +23,7 @@ export const StyledSearchInput = styled.input`
   height: 2rem;
   font-size: 100%;
   margin-top: 1em;
+  padding-left: 0.5em;
 `
 
 export const StyledResults = styled.div`

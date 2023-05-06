@@ -41,11 +41,12 @@ export const NowPlayingCover = styled.img`
   float: left;
   width: 4rem;
   height: 4rem;
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
 `
 
 export const NowPlayingSide = styled.div`
   text-align: left;
+  margin-top: 0.5rem;
 `
 
 export const NowPlayingName = styled.div`
@@ -60,7 +61,7 @@ export const NowPlayingName = styled.div`
 
 export const NowPlayingArtist = styled.div`
   margin-bottom: 0.2rem;
-  font-size: 1rem;
+  font-size: .75rem;
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
