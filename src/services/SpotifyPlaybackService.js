@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { GetAuthHeader, GetToken } from './SpotifyAuthService'
 
-export const TransferPlayback = device_id => {
+export const TransferPlayback = (device_id) => {
   return (
     axios
       .put(
@@ -18,7 +18,7 @@ export const TransferPlayback = device_id => {
   )
 }
 
-export const SearchAlbums = search => {
+export const SearchAlbums = (search) => {
   const token = GetToken()
 
   return (
@@ -37,4 +37,8 @@ export const SearchAlbums = search => {
         response => response.data
       )
   )
+}
+
+export const PlayAlbum = (uri) => {
+  console.log(uri)
 }

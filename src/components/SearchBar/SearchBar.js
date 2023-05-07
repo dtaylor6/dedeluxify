@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
 import useSpotifySearch from '../hooks/useSpotifySearch'
+import { PlayAlbum } from '../../services/SpotifyPlaybackService'
 import {
   StyledSearchBar,
   StyledSearchInput,
   SearchInputContainer,
-  StyledResult,
+  StyledResultButton,
   StyledResults } from './SearchBar.style'
 
 const SearchBar = (props) => {
@@ -35,16 +36,19 @@ const Results = (props) => {
   let index = 0
   return (
     <StyledResults>
-      { props.results && props.results.map(result => <Result result={result} key={++index} />)}
+      { props.results && props.results.map(result => <ResultButton result={result} key={++index} />)}
     </StyledResults>
   )
 }
 
-const Result = (props) => {
+const ResultButton = (props) => {
   return (
-    <StyledResult title={`${props.result.name} | ${props.result.artists[0].name}`}>
+    <StyledResultButton
+      title={`${props.result.name} | ${props.result.artists[0].name}`}
+      onClick={() => PlayAlbum(props.result.uri)}
+    >
       <b>{props.result.name}</b> | {props.result.artists[0].name}
-    </StyledResult>
+    </StyledResultButton>
   )
 }
 

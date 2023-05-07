@@ -31,7 +31,7 @@ export const StyledResults = styled.div`
   max-height: 100%;
 `
 
-export const StyledResult = styled.button`
+export const StyledResultButton = styled.button`
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
