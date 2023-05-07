@@ -19,8 +19,6 @@ export const TransferPlayback = (device_id) => {
 }
 
 export const SearchAlbums = (search) => {
-  const token = GetToken()
-
   return (
     axios
       .get(
@@ -28,9 +26,7 @@ export const SearchAlbums = (search) => {
           params: {
             q: search
           },
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
+          headers: GetAuthHeader()
         }
       )
       .then(
@@ -40,5 +36,15 @@ export const SearchAlbums = (search) => {
 }
 
 export const PlayAlbum = (uri) => {
-  console.log(uri)
+  return (
+    axios
+      .get(
+        'http://localhost:3000/api/spotify/play/', {
+          params: {
+            album_uri: uri
+          },
+          headers: GetAuthHeader()
+        }
+      )
+  )
 }
