@@ -19,6 +19,10 @@ export const TransferPlayback = (device_id) => {
 }
 
 export const SearchAlbums = (search) => {
+  if (search === '') {
+    return undefined
+  }
+
   return (
     axios
       .get(
