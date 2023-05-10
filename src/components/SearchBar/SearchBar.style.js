@@ -29,6 +29,12 @@ export const StyledSearchInput = styled.input`
 export const StyledResults = styled.div`
   width: 50%;
   max-height: 100%;
+  display: none;
+
+  /* Only show results when a user focuses on the search bar */
+  ${StyledSearchBar}:focus-within & {
+    display: block;
+  }
 `
 
 export const StyledResultButton = styled.button`
