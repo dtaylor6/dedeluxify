@@ -43,16 +43,16 @@ export const StyledResultButton = styled.button`
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-  background-color: white;
+  background-color: #F3F3F3;
   border-width: 0;
   cursor: pointer;
 
   &:hover {
-    background-color: #EAEAEA;
+    background-color: #D2D2D2;
   }
 
   &:active {
-    background-color: #D2D2D2;
+    background-color: #949494;
   }
 `
 

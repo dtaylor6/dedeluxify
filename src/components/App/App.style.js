@@ -11,5 +11,6 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  background-color: #F3F3F3;
 `
 export default StyledApp
