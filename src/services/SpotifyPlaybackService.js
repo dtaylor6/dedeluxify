@@ -39,13 +39,13 @@ export const SearchAlbums = (search) => {
   )
 }
 
-export const PlayAlbum = (id) => {
+export const PlayAlbum = (albumId) => {
   return (
     axios
       .get(
         'http://localhost:3000/api/spotify/play/', {
           params: {
-            id
+            albumId
           },
           headers: GetAuthHeader()
         }
