@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GetAuthHeader, GetToken } from './SpotifyAuthService'
+import { GetAuthHeader } from './SpotifyAuthService'
 
 export const TransferPlayback = (device_id) => {
   return (
