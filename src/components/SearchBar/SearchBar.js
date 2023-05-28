@@ -45,7 +45,7 @@ const ResultButton = (props) => {
   return (
     <StyledResultButton
       title={`${props.result.name} | ${props.result.artists[0].name}`}
-      onClick={() => PlayAlbum(props.result.id)}
+      onClick={() => PlayAlbum(props.result.uri)}
     >
       <b>{props.result.name}</b> | {props.result.artists[0].name}
     </StyledResultButton>
