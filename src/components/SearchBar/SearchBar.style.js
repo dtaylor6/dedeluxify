@@ -33,7 +33,7 @@ export const StyledResults = styled.div`
   /* Prevent border from being displayed with no search results */
   border: ${props => props.showBorder ? 'thin solid black' : 'none'};
   border-radius: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding: 0.25rem 0;
 
   /* Only show results when a user focuses on the search bar */
   ${StyledSearchBar}:focus-within & {
