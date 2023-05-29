@@ -30,6 +30,7 @@ export const StyledResults = styled.div`
   width: 50%;
   max-height: 100%;
   display: none;
+  /* Prevent border from being displayed with no search results */
   border: ${props => props.showBorder ? 'thin solid black' : 'none'};
   border-radius: 0.25rem;
   padding-bottom: 0.25rem;
