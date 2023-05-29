@@ -30,6 +30,9 @@ export const StyledResults = styled.div`
   width: 50%;
   max-height: 100%;
   display: none;
+  border: ${props => props.showBorder ? 'thin solid black' : 'none'};
+  border-radius: 0.25rem;
+  padding-bottom: 0.25rem;
 
   /* Only show results when a user focuses on the search bar */
   ${StyledSearchBar}:focus-within & {

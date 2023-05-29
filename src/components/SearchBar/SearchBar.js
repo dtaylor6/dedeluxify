@@ -34,9 +34,12 @@ const SearchInput = (props) => {
 
 const Results = (props) => {
   let index = 0
+  const results = props.results
+  const showBorder = results && (results.length > 0)
+
   return (
-    <StyledResults>
-      { props.results && props.results.map(result => <ResultButton result={result} key={++index} />)}
+    <StyledResults showBorder={showBorder}>
+      { results && results.map(result => <ResultButton result={result} key={++index} />)}
     </StyledResults>
   )
 }
