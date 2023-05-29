@@ -55,6 +55,8 @@ const SpotifyPlayer = (props) => {
 
       setPlayer(player)
 
+      player.setName('Dedeluxify Player')
+
       player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id)
         TransferPlayback(device_id)
