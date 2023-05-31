@@ -5,7 +5,7 @@ const StyledApp = styled.div`
   left: 0;
   top: 0;
   width: 100%;
-  overflow: auto;
+  overflow: clip;
   min-height: 100vh;
   font-family: Roboto, Arial, sans-serif;
   display: flex;

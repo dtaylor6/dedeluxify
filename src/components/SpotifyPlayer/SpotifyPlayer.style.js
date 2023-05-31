@@ -3,9 +3,10 @@ import styled from 'styled-components'
 export const PlayerContainer = styled.div`
   height: 5rem;
   width: 100%;
-  align-self: flex-end;
   align-items: center;
   display: flex;
+  position: sticky;
+  bottom: 0;
   justify-content: space-between;
   border-top: thin solid;
   background-color: white;

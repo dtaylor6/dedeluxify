@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const StyledSearchBar = styled.div`
   flex: 1;
   width: 100%;
+  height: calc(100vh - 5rem); /*Subtract height of player*/
   top: 0%;
   display: flex;
   align-items: center;
@@ -34,6 +35,7 @@ export const StyledResults = styled.div`
   border: ${props => props.showBorder ? 'thin solid black' : 'none'};
   border-radius: 0.25rem;
   padding: 0.25rem 0;
+  margin-bottom: 0.5rem;
 
   /* Only show results when a user focuses on the search bar */
   ${StyledSearchBar}:focus-within & {
