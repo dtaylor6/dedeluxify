@@ -20,11 +20,16 @@ export const SearchInputContainer = styled.div`
 export const StyledSearchInput = styled.input`
   width: 50%;
   border-radius: 0.25rem;
-  border-width: thin;
+  border: 0.1rem solid black;
   height: 2rem;
   font-size: 100%;
   margin-top: 1em;
   padding-left: 0.5em;
+
+  &:focus {
+    outline: 0;
+    border: 0.1rem solid #2886fd;
+  }
 `
 
 export const StyledResults = styled.div`
