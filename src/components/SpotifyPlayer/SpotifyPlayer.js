@@ -24,7 +24,8 @@ const track = {
   album: {
     images: [
       { url: '' }
-    ]
+    ],
+    name: ''
   },
   artists: [
     { name: '' }

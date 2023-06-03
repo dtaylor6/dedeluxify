@@ -10,6 +10,7 @@ export const PlayerContainer = styled.div`
   justify-content: space-between;
   border-top: thin solid;
   background-color: white;
+  z-index: 2;
 
   &:after {
     flex: 1;
@@ -26,8 +27,8 @@ export const StyledTrackWrapper = styled.div`
   height: auto;
   margin-left: 1%;
   position: relative;
-  z-index: 1;
 `
+
 export const StyledButtonWrapper = styled.div`
   flex: 1;
   display: flex;
@@ -38,7 +39,7 @@ export const StyledButtonWrapper = styled.div`
 `
 
 export const NowPlayingCover = styled.img`
-  border-radius: 0.5em;
+  border-radius: 0.25rem;
   float: left;
   width: 4rem;
   height: 4rem;

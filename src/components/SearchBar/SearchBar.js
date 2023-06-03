@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 
 import useSpotifySearch from '../hooks/useSpotifySearch'
-import { PlayAlbum } from '../../services/SpotifyPlaybackService'
+import AlbumWrapper from '../AlbumWindow/AlbumWindow'
 import {
   StyledSearchBar,
   StyledSearchInput,
   SearchInputContainer,
   StyledResultButton,
-  StyledResults } from './SearchBar.style'
+  StyledResults
+} from './SearchBar.style'
 
 const SearchBar = (props) => {
   const [query, setQuery] = useState('')
@@ -45,12 +46,15 @@ const Results = (props) => {
 }
 
 const ResultButton = (props) => {
+  const [album, setAlbum] = useState(undefined)
+
   return (
     <StyledResultButton
       title={`${props.result.name} | ${props.result.artists[0].name}`}
-      onClick={() => PlayAlbum(props.result.uri)}
+      onClick={() => setAlbum(props.result)}
     >
       <b>{props.result.name}</b> | {props.result.artists[0].name}
+      {album && <AlbumWrapper album={props.result} setAlbum={setAlbum} />}
     </StyledResultButton>
   )
 }
