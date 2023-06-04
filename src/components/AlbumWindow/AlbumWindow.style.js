@@ -15,8 +15,8 @@ export const StyledAlbumWrapper = styled.div`
 export const StyledAlbumDiv = styled.div`
   display: inline-block;
   text-align: center;
-  height: 15rem;
-  width: 33%;
+  height: 10rem;
+  width: 25rem;
   position: relative;
   top: 33%;
   transform: translateY(-50%);
@@ -32,7 +32,9 @@ export const AlbumCover = styled.img`
   height: 6rem;
   margin-left: 1rem;
   margin-right: 0.75rem;
-  margin-top: 2rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 `
 
 export const AlbumSide = styled.div`
