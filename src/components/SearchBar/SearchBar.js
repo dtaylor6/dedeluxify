@@ -37,25 +37,28 @@ const Results = (props) => {
   let index = 0
   const results = props.results
   const showBorder = results && (results.length > 0)
+  const [album, setAlbum] = useState(undefined)
 
   return (
     <StyledResults showBorder={showBorder}>
-      { results && results.map(result => <ResultButton result={result} key={++index} />)}
+      {album && <AlbumWrapper album={album} setAlbum={setAlbum} />}
+      { results && results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
     </StyledResults>
   )
 }
 
 const ResultButton = (props) => {
-  const [album, setAlbum] = useState(undefined)
+  const setAlbum = props.setAlbum
 
   return (
-    <StyledResultButton
-      title={`${props.result.name} | ${props.result.artists[0].name}`}
-      onClick={() => setAlbum(props.result)}
-    >
-      <b>{props.result.name}</b> | {props.result.artists[0].name}
-      {album && <AlbumWrapper album={props.result} setAlbum={setAlbum} />}
-    </StyledResultButton>
+    <div>
+      <StyledResultButton
+        title={`${props.result.name} | ${props.result.artists[0].name}`}
+        onClick={() => setAlbum(props.result)}
+      >
+        <b>{props.result.name}</b> | {props.result.artists[0].name}
+      </StyledResultButton>
+    </div>
   )
 }
 
