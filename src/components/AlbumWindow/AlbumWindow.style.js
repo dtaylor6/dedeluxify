@@ -13,9 +13,7 @@ export const StyledAlbumWrapper = styled.div`
 `
 
 export const StyledAlbumDiv = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: inline-block;
   height: 9rem;
   width: 25rem;
   position: relative;
@@ -39,23 +37,22 @@ export const AlbumSide = styled.div`
   text-align: left;
   display: block;
   height: 6rem;
+  margin-top: 1.5rem;
 `
 
 export const AlbumName = styled.div`
-  font-size: 1rem;
   font-weight: bold;
-  margin-top: 1rem;
   margin-bottom: 0.2rem;
   margin-right: 0;
+  padding-top: 1rem;
   overflow: hidden;
-  text-overflow: clip;
+  text-overflow: ellipsis;
   white-space: nowrap;
 `
 
 export const AlbumArtist = styled.div`
   margin-bottom: 0.2rem;
-  font-size: .75rem;
   overflow: hidden;
-  text-overflow: clip;
+  text-overflow: ellipsis;
   white-space: nowrap;
 `
