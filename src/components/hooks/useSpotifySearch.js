@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { SearchAlbums } from '../../services/SpotifyPlaybackService'
 
 // How many ms to wait to search after user stops typing
-const SEARCH_TIMEOUT = 1000
+const SEARCH_TIMEOUT = 500
 
 // Fetch album query from Spotify service
 const useSpotifySearch = (query) => {
