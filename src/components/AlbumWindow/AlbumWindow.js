@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService'
 
+import AlbumReportForm from '../AlbumReportForm/AlbumReportForm'
 import {
   StyledAlbumWrapper,
   StyledAlbumDiv,
@@ -10,6 +11,16 @@ import {
   AlbumName,
   AlbumArtist
 } from './AlbumWindow.style'
+
+const Play = (albumUri, setAlbum) => {
+  PlayAlbum(albumUri)
+  setAlbum(undefined)
+}
+
+const Queue = (albumUri, setAlbum) => {
+  QueueAlbum(albumUri)
+  setAlbum(undefined)
+}
 
 const AlbumWrapper = (props) => {
   return(
@@ -20,15 +31,7 @@ const AlbumWrapper = (props) => {
 }
 
 const AlbumDiv = (props) => {
-  const Play = (albumUri) => {
-    PlayAlbum(albumUri)
-    props.setAlbum(undefined)
-  }
-
-  const Queue = (albumUri) => {
-    QueueAlbum(albumUri)
-    props.setAlbum(undefined)
-  }
+  const [showForm, setShowForm] = useState(false)
 
   return(
     <StyledAlbumDiv>
@@ -40,9 +43,10 @@ const AlbumDiv = (props) => {
         <AlbumArtist title={`${props.album.artists[0].name}`}>
           {props.album.artists[0].name}
         </AlbumArtist>
-        <button onClick={() => Play(props.album.uri)}>Play</button>
-        <button onClick={() => Queue(props.album.uri)}>Queue</button>
+        <button onClick={() => Play(props.album.uri, props.setAlbum)}>Play</button>
+        <button onClick={() => Queue(props.album.uri, props.setAlbum)}>Queue</button>
       </AlbumSide>
+      {showForm && <AlbumReportForm />}
     </StyledAlbumDiv>
   )
 }
