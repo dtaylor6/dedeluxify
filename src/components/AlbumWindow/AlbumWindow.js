@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PlayAlbum } from '../../services/SpotifyPlaybackService'
+import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService'
 
 import {
   StyledAlbumWrapper,
@@ -25,6 +25,11 @@ const AlbumDiv = (props) => {
     props.setAlbum(undefined)
   }
 
+  const Queue = (albumUri) => {
+    QueueAlbum(albumUri)
+    props.setAlbum(undefined)
+  }
+
   return(
     <StyledAlbumDiv>
       <AlbumCover src={props.album.images[0].url} alt="" />
@@ -37,6 +42,7 @@ const AlbumDiv = (props) => {
           {props.album.artists[0].name}
         </AlbumArtist>
         <button onClick={() => Play(props.album.uri)}>Play</button>
+        <button onClick={() => Queue(props.album.uri)}>Queue</button>
       </AlbumSide>
     </StyledAlbumDiv>
   )

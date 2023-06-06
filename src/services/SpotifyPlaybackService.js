@@ -52,3 +52,17 @@ export const PlayAlbum = (uri) => {
       )
   )
 }
+
+export const QueueAlbum = (uri) => {
+  return (
+    axios
+      .get(
+        'http://localhost:3000/api/spotify/queue/', {
+          params: {
+            uri
+          },
+          headers: GetAuthHeader()
+        }
+      )
+  )
+}
