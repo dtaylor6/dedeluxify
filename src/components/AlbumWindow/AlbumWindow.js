@@ -32,9 +32,8 @@ const AlbumDiv = (props) => {
 
   return(
     <StyledAlbumDiv>
-      <AlbumCover src={props.album.images[0].url} alt="" />
-
       <AlbumSide>
+        <AlbumCover src={props.album.images[0].url} alt="" />
         <AlbumName title={props.album.name}>
           {props.album.name}
         </AlbumName>
