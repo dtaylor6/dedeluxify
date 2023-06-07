@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import useSpotifySearch from '../hooks/useSpotifySearch'
 import AlbumWrapper from '../AlbumWindow/AlbumWindow'
@@ -19,28 +19,50 @@ const SearchBar = (props) => {
     setQuery(event.target.value)
   }
 
+  // Hide search results when clicking outside of search bar or search results box
+  const [showResults, setShowResults] = useState(false)
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      if (document.getElementById('search-bar').contains(e.target)) {
+        setShowResults(true)
+      }
+      else if (document.getElementById('search-results').contains(e.target)) {
+        setShowResults(true)
+      }
+      else {
+        // Clicked outside the box
+        setShowResults(false)
+      }
+    })
+  }, [])
+
   return (
     <StyledSearchBar>
       <SearchInputContainer>
         <SearchInput onChange={fetch} />
       </SearchInputContainer>
-      <Results results={(query !== '') ? searchResults : undefined} />
+      <Results
+        id='search-results'
+        results={(query !== '') ? searchResults : undefined}
+        showResults={showResults}
+      />
     </StyledSearchBar>
   )
 }
 
 const SearchInput = (props) => {
-  return <StyledSearchInput title='Search' type='search' placeholder='Search' onChange={props.onChange} />
+  return <StyledSearchInput id='search-bar' title='Search' type='search' placeholder='Search' onChange={props.onChange} />
 }
 
 const Results = (props) => {
   let index = 0
   const results = props.results
+  const showResults = props.showResults
   const showBorder = results && (results.length > 0)
   const [album, setAlbum] = useState(undefined)
 
   return (
-    <StyledResults showBorder={showBorder}>
+    <StyledResults showBorder={showBorder} showResults={showResults} id='search-results'>
       {album && <AlbumWrapper album={album} setAlbum={setAlbum} />}
       { results && results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
     </StyledResults>

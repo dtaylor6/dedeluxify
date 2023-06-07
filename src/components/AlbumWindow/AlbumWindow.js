@@ -35,7 +35,7 @@ const AlbumDiv = (props) => {
   const [showForm, setShowForm] = useState(false)
 
   return(
-    <StyledAlbumDiv>
+    <StyledAlbumDiv id='album-div'>
       <CloseButton onClick={() => props.setAlbum(undefined)}>X</CloseButton>
       <AlbumSide>
         <AlbumCover src={props.album.images[0].url} alt="" />

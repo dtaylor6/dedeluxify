@@ -35,17 +35,12 @@ export const StyledSearchInput = styled.input`
 export const StyledResults = styled.div`
   width: 50%;
   max-height: 100%;
-  display: none;
+  display: ${props => props.showResults ? 'block' : 'none'};
   /* Prevent border from being displayed with no search results */
   border: ${props => props.showBorder ? 'thin solid black' : 'none'};
   border-radius: 0.25rem;
   padding: 0.25rem 0;
   margin-bottom: 0.5rem;
-
-  /* Only show results when a user focuses on the search bar */
-  ${StyledSearchBar}:focus-within & {
-    display: block;
-  }
 `
 
 export const StyledResultButton = styled.button`
