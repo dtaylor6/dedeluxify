@@ -21,8 +21,8 @@ export const StyledSearchInput = styled.input`
   width: 50%;
   border-radius: 0.25rem;
   border: 0.1rem solid black;
-  height: 2rem;
-  font-size: 100%;
+  height: 3rem;
+  font-size: 1.5rem;
   margin-top: 1em;
   padding-left: 0.5em;
 
@@ -57,6 +57,7 @@ export const StyledResultButton = styled.button`
   background-color: #F3F3F3;
   border-width: 0;
   cursor: pointer;
+  font-size: 1rem;
 
   &:hover {
     background-color: #D2D2D2;
