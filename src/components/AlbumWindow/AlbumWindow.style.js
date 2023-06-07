@@ -13,9 +13,11 @@ export const StyledAlbumWrapper = styled.div`
 `
 
 export const StyledAlbumDiv = styled.div`
-  display: inline-block;
-  height: 9rem;
-  width: 25rem;
+  display: inline-flex;
+  flex-direction: column;
+  height: 15rem;
+  width: 45rem;
+  max-width: 90vw;
   position: relative;
   top: 33%;
   transform: translateY(-50%);
@@ -26,8 +28,8 @@ export const StyledAlbumDiv = styled.div`
 
 export const AlbumCover = styled.img`
   float: left;
-  width: 6rem;
-  height: 6rem;
+  width: 9rem;
+  height: 9rem;
   margin-left: 1rem;
   margin-right: 0.75rem;
 `
@@ -35,15 +37,14 @@ export const AlbumCover = styled.img`
 export const AlbumSide = styled.div`
   text-align: left;
   display: block;
-  height: 6rem;
-  margin-top: 1.5rem;
+  height: 9rem;
 `
 
 export const AlbumName = styled.div`
   font-weight: bold;
   margin-bottom: 0.2rem;
   margin-right: 0;
-  padding-top: 1rem;
+  padding-top: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -54,4 +55,24 @@ export const AlbumArtist = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`
+
+export const CloseButton = styled.button`
+  font-size: 2rem;
+  margin-left: auto;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.25rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: rgba(255,255,255,0);
+
+  &:hover {
+    background-color: #D2D2D2;
+  }
+
+  &:active {
+    position:relative;
+    top:1px;
+  }
 `

@@ -9,7 +9,8 @@ import {
   AlbumCover,
   AlbumSide,
   AlbumName,
-  AlbumArtist
+  AlbumArtist,
+  CloseButton
 } from './AlbumWindow.style'
 
 const Play = (albumUri, setAlbum) => {
@@ -35,6 +36,7 @@ const AlbumDiv = (props) => {
 
   return(
     <StyledAlbumDiv>
+      <CloseButton onClick={() => props.setAlbum(undefined)}>X</CloseButton>
       <AlbumSide>
         <AlbumCover src={props.album.images[0].url} alt="" />
         <AlbumName title={props.album.name}>
