@@ -42,7 +42,6 @@ const SearchBar = (props) => {
         <SearchInput onChange={fetch} />
       </SearchInputContainer>
       <Results
-        id='search-results'
         results={(query !== '') ? searchResults : undefined}
         showResults={showResults}
       />
@@ -62,7 +61,7 @@ const Results = (props) => {
   const [album, setAlbum] = useState(undefined)
 
   return (
-    <StyledResults showBorder={showBorder} showResults={showResults} id='search-results'>
+    <StyledResults id='search-results' showBorder={showBorder} showResults={showResults}>
       {album && <AlbumWrapper album={album} setAlbum={setAlbum} />}
       { results && results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
     </StyledResults>
