@@ -39,7 +39,6 @@ export const StyledButtonWrapper = styled.div`
 `
 
 export const NowPlayingCover = styled.img`
-  border-radius: 0.25rem;
   float: left;
   width: 4rem;
   height: 4rem;

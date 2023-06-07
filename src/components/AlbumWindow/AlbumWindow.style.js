@@ -25,7 +25,6 @@ export const StyledAlbumDiv = styled.div`
 `
 
 export const AlbumCover = styled.img`
-  border-radius: 0.5rem;
   float: left;
   width: 6rem;
   height: 6rem;
