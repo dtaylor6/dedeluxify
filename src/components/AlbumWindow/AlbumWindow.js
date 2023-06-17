@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService'
 
-import AlbumReportForm from '../AlbumReportForm/AlbumReportForm'
+import AlbumPreferenceForm from '../AlbumReportForm/AlbumPreferenceForm'
 import {
   StyledAlbumWrapper,
   StyledAlbumDiv,
@@ -47,8 +47,9 @@ const AlbumDiv = (props) => {
         </AlbumArtist>
         <button onClick={() => Play(props.album.uri, props.setAlbum)}>Play</button>
         <button onClick={() => Queue(props.album.uri, props.setAlbum)}>Queue</button>
+        <button onClick={() => setShowForm(!showForm)}>Set Track Preferences</button>
       </AlbumSide>
-      {showForm && <AlbumReportForm />}
+      {showForm && <AlbumPreferenceForm albumUri={props.album.uri} />}
     </StyledAlbumDiv>
   )
 }
