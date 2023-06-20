@@ -9,6 +9,7 @@ const useDatabaseResponse = (serviceCallback, args) => {
   const callback = async () => {
     setLoading(true)
     const serviceResponse = await serviceCallback(...args)
+    serviceResponse['loading'] = false
     setLoading(false)
     if (!isStale) {
       setResponse(serviceResponse)

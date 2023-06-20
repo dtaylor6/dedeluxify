@@ -5,20 +5,20 @@ import { FetchTrackPreferences } from '../../services/DatabaseService'
 import {
   StyledAlbumReportForm,
   StyledLabel,
-  StyledCheckboxWrapper
+  StyledCheckbox
 } from './AlbumPreferenceForm.style'
 
 const AlbumPreferenceForm = (props) => {
   const albumUri = props.albumUri
   const tracks = useDatabaseResponse(FetchTrackPreferences, [albumUri])
-  console.log(tracks)
 
   return(
     <StyledAlbumReportForm maxHeight={props.maxHeight}>
       {
-        tracks && tracks.length > 0
-        && tracks.map(track => <CheckboxWrapper key={track.uri}>track.name</CheckboxWrapper>)
+        tracks && !tracks.loading
+        && tracks.data.map(track => <CheckboxWrapper key={track.uri} track={track} />)
       }
+      {tracks && console.log(tracks.data)}
     </StyledAlbumReportForm>
   )
 }
@@ -26,13 +26,12 @@ const AlbumPreferenceForm = (props) => {
 const CheckboxWrapper = (props) => {
   return (
     <StyledLabel>
-      <StyledCheckboxWrapper
+      <StyledCheckbox
         type='checkbox'
-        id={props.id}
-        checked={props.checked}
-      >
-        {props.children}
-      </StyledCheckboxWrapper>
+        id={props.track.uri}
+        defaultChecked={true}
+      />
+      {props.track.name}
     </StyledLabel>
   )
 }
