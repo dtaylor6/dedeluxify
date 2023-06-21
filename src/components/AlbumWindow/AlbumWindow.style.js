@@ -15,7 +15,7 @@ export const StyledAlbumWrapper = styled.div`
 export const StyledAlbumDiv = styled.div`
   display: inline-flex;
   flex-direction: column;
-  height: 15rem;
+  height: 30rem;
   width: 45rem;
   max-width: 90vw;
   position: relative;

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import useDatabaseResponse from '../hooks/useDatabaseService'
-import { FetchTrackPreferences } from '../../services/DatabaseService'
+import { FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService'
 import {
   StyledAlbumReportForm,
   StyledLabel,
@@ -15,7 +15,14 @@ const AlbumPreferenceForm = (props) => {
 
   const SavePreferences = (event) => {
     event.preventDefault()
-    console.log('Submitted')
+    const checkboxes = event.target.querySelectorAll('input')
+    const uris = []
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        uris.push(checkbox.id)
+      }
+    })
+    PostTrackPreferences(uris)
   }
 
   return(
