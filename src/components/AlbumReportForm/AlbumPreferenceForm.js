@@ -3,7 +3,8 @@ import React from 'react'
 import useDatabaseResponse from '../hooks/useDatabaseService'
 import { FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService'
 import {
-  StyledAlbumReportForm,
+  AlbumPreferenceFormWrapper,
+  StyledAlbumPreferenceForm,
   StyledLabel,
   StyledCheckbox,
   StyledCheckboxWrapper
@@ -26,16 +27,18 @@ const AlbumPreferenceForm = (props) => {
   }
 
   return(
-    <StyledAlbumReportForm maxHeight={props.maxHeight} onSubmit={SavePreferences}>
-      <StyledCheckboxWrapper>
-        {
-          !tracks.loading
-          && tracks.data.map((track, index) => <CheckboxWrapper key={track.uri} track={track} index={index} />)
-        }
-        {tracks && console.log(tracks.data)}
-      </StyledCheckboxWrapper>
-      {!tracks.loading && <button type="submit">Save Preferences</button>}
-    </StyledAlbumReportForm>
+    <AlbumPreferenceFormWrapper>
+      <StyledAlbumPreferenceForm maxHeight={props.maxHeight} onSubmit={SavePreferences}>
+        <StyledCheckboxWrapper>
+          {
+            !tracks.loading
+            && tracks.data.map((track, index) => <CheckboxWrapper key={track.uri} track={track} index={index} />)
+          }
+          {tracks && console.log(tracks.data)}
+        </StyledCheckboxWrapper>
+        {!tracks.loading && <button type="submit">Save Preferences</button>}
+      </StyledAlbumPreferenceForm>
+    </AlbumPreferenceFormWrapper>
   )
 }
 
@@ -48,7 +51,7 @@ const CheckboxWrapper = (props) => {
           id={props.track.uri}
           defaultChecked={true}
         />
-        {props.index+1}. {props.track.name}
+        <b>{props.index+1}.</b> {props.track.name}
       </StyledLabel>
     </li>
   )

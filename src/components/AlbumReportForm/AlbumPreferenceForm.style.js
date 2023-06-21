@@ -1,8 +1,15 @@
 import styled from 'styled-components'
 
-export const StyledAlbumReportForm = styled.form`
+// Prevents auto scroll bar from repositioning neighbor elements
+export const AlbumPreferenceFormWrapper = styled.div`
+  height: '13rem;'
+`
+
+export const StyledAlbumPreferenceForm = styled.form`
   overflow-y: auto;
   height: auto;
+  max-height: 12rem;
+  margin-bottom: 0.5rem;
 `
 
 export const StyledCheckboxWrapper = styled.ul`

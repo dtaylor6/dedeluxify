@@ -38,6 +38,7 @@ export const AlbumSide = styled.div`
   text-align: left;
   display: block;
   height: 9rem;
+  margin-bottom: 0.5rem;
 `
 
 export const AlbumName = styled.div`
