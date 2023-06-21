@@ -5,7 +5,7 @@ export const StyledAlbumReportForm = styled.form`
 `
 
 export const StyledCheckboxWrapper = styled.ul`
-  columns: 4 8em;
+  columns: 3 12em;
   list-style-type: none;
   text-align: left;
   overflow: hidden;
@@ -17,6 +17,11 @@ export const StyledCheckboxWrapper = styled.ul`
 `
 
 export const StyledLabel = styled.label`
+  width: 14em;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const StyledCheckbox = styled.input`
