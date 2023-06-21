@@ -15,3 +15,18 @@ export const FetchTrackPreferences = (uri) => {
       )
   )
 }
+
+export const PostTrackPreferences = (uris) => {
+  return(
+    axios
+      .post(
+        'http://localhost:3000/api/trackPreferences/',
+        {
+          uris
+        },
+        {
+          headers: GetAuthHeader()
+        }
+      )
+  )
+}

@@ -13,15 +13,21 @@ const AlbumPreferenceForm = (props) => {
   const albumUri = props.albumUri
   const tracks = useDatabaseResponse(FetchTrackPreferences, [albumUri])
 
+  const SavePreferences = (event) => {
+    event.preventDefault()
+    console.log('Submitted')
+  }
+
   return(
-    <StyledAlbumReportForm maxHeight={props.maxHeight}>
+    <StyledAlbumReportForm maxHeight={props.maxHeight} onSubmit={SavePreferences}>
       <StyledCheckboxWrapper>
         {
-          tracks && !tracks.loading
+          !tracks.loading
           && tracks.data.map((track, index) => <CheckboxWrapper key={track.uri} track={track} index={index} />)
         }
         {tracks && console.log(tracks.data)}
       </StyledCheckboxWrapper>
+      {!tracks.loading && <button type="submit">Save Preferences</button>}
     </StyledAlbumReportForm>
   )
 }

@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react'
 // Hook for setting data from async database response
 const useDatabaseResponse = (serviceCallback, args) => {
   const [response, setResponse] = useState(undefined)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   let isStale = false
 
   const callback = async () => {
-    setLoading(true)
     const serviceResponse = await serviceCallback(...args)
     serviceResponse['loading'] = false
     setLoading(false)
