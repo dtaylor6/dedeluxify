@@ -16,7 +16,7 @@ export const StyledAlbumDiv = styled.div`
   display: inline-flex;
   flex-direction: column;
   min-height: 15rem;
-  max-height: 25rem;
+  max-height: 32rem;
   width: 45rem;
   max-width: 90vw;
   position: relative;
