@@ -27,7 +27,7 @@ export const StyledCheckboxWrapper = styled.ol`
 `
 
 export const StyledLabel = styled.label`
-  width: 14em;
+  width: 12em;
   display: block;
   white-space: nowrap;
   overflow: hidden;
