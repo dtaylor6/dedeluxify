@@ -20,8 +20,7 @@ export const StyledAlbumDiv = styled.div`
   width: 45rem;
   max-width: 90vw;
   position: relative;
-  top: 33%;
-  transform: translateY(-50%);
+  top: 10%;
   background-color: rgba(255,255,255,1);
   border-radius: 0.25rem;
   border: 0.1rem solid black;
