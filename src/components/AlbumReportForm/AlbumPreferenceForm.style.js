@@ -12,8 +12,10 @@ export const StyledAlbumPreferenceForm = styled.form`
   margin-bottom: 0.5rem;
 `
 
-export const StyledCheckboxWrapper = styled.ul`
-  columns: 3 12em;
+export const StyledCheckboxWrapper = styled.ol`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 10px;
   list-style-type: none;
   text-align: left;
   overflow: hidden;

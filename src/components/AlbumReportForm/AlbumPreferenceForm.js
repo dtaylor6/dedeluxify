@@ -43,7 +43,7 @@ const AlbumPreferenceForm = (props) => {
 
 const CheckboxWrapper = (props) => {
   return (
-    <li title={props.track.name} >
+    <li title={props.track.name}>
       <StyledLabel>
         <StyledCheckbox
           type='checkbox'
