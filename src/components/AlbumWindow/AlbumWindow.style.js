@@ -15,7 +15,8 @@ export const StyledAlbumWrapper = styled.div`
 export const StyledAlbumDiv = styled.div`
   display: inline-flex;
   flex-direction: column;
-  height: 30rem;
+  min-height: 15rem;
+  max-height: 25rem;
   width: 45rem;
   max-width: 90vw;
   position: relative;
@@ -56,6 +57,11 @@ export const AlbumArtist = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`
+
+export const StyledButton = styled.button`
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
 `
 
 export const CloseButton = styled.button`

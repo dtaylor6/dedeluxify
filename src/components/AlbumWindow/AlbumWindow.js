@@ -10,7 +10,8 @@ import {
   AlbumSide,
   AlbumName,
   AlbumArtist,
-  CloseButton
+  CloseButton,
+  StyledButton
 } from './AlbumWindow.style'
 
 const Play = (albumUri, setAlbum) => {
@@ -45,11 +46,12 @@ const AlbumDiv = (props) => {
         <AlbumArtist title={`${props.album.artists[0].name}`}>
           {props.album.artists[0].name}
         </AlbumArtist>
-        <button onClick={() => Play(props.album.uri, props.setAlbum)}>Play</button>
-        <button onClick={() => Queue(props.album.uri, props.setAlbum)}>Queue</button>
-        <button onClick={() => setShowForm(!showForm)}>Set Track Preferences</button>
+        <StyledButton onClick={() => Play(props.album.uri, props.setAlbum)}>Play</StyledButton>
+        <StyledButton onClick={() => Queue(props.album.uri, props.setAlbum)}>Queue</StyledButton>
+        <StyledButton onClick={() => setShowForm(!showForm)}>Set Track Preferences</StyledButton>
       </AlbumSide>
-      {showForm && <AlbumPreferenceForm albumUri={props.album.uri} />}
+      {showForm && <AlbumPreferenceForm albumUri={props.album.uri} />
+      }
     </StyledAlbumDiv>
   )
 }

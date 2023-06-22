@@ -26,17 +26,16 @@ const AlbumPreferenceForm = (props) => {
     PostTrackPreferences(uris)
   }
 
-  return(
+  return(!tracks.loading &&
     <AlbumPreferenceFormWrapper>
       <StyledAlbumPreferenceForm maxHeight={props.maxHeight} onSubmit={SavePreferences}>
         <StyledCheckboxWrapper>
           {
-            !tracks.loading
+            tracks.data
             && tracks.data.map((track, index) => <CheckboxWrapper key={track.uri} track={track} index={index} />)
           }
-          {tracks && console.log(tracks.data)}
         </StyledCheckboxWrapper>
-        {!tracks.loading && <button type="submit">Save Preferences</button>}
+        <button type="submit">Save Preferences</button>
       </StyledAlbumPreferenceForm>
     </AlbumPreferenceFormWrapper>
   )
