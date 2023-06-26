@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-// Prevents auto scroll bar from repositioning neighbor elements
+// Wrapper prevents auto scroll bar from repositioning neighbor elements
 export const AlbumPreferenceFormWrapper = styled.div`
   height: '20rem;'
 `

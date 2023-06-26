@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import useDatabaseResponse from '../hooks/useDatabaseService'
+import useDatabaseResponse from '../hooks/useDatabaseResponse'
 import { FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService'
 import {
   AlbumPreferenceFormWrapper,
@@ -13,9 +13,13 @@ import {
 const AlbumPreferenceForm = (props) => {
   const albumUri = props.albumUri
   const tracks = useDatabaseResponse(FetchTrackPreferences, [albumUri])
+  const [buttonText, setButtonText] = useState('Save Preferences')
+  const [buttonDisable, setButtonDisable] = useState(false)
 
-  const SavePreferences = (event) => {
+  const SavePreferences = async (event) => {
     event.preventDefault()
+    setButtonDisable(true)
+    setButtonText('Saving...')
     const checkboxes = event.target.querySelectorAll('input')
     const uris = []
     checkboxes.forEach(checkbox => {
@@ -23,7 +27,9 @@ const AlbumPreferenceForm = (props) => {
         uris.push(checkbox.id)
       }
     })
-    PostTrackPreferences(uris)
+    await PostTrackPreferences(uris)
+    setButtonText('Save Preferences')
+    setButtonDisable(false)
   }
 
   return(!tracks.loading &&
@@ -35,7 +41,7 @@ const AlbumPreferenceForm = (props) => {
             && tracks.data.map((track, index) => <CheckboxWrapper key={track.uri} track={track} index={index} />)
           }
         </StyledCheckboxWrapper>
-        <button type="submit">Save Preferences</button>
+        <button type="submit" disabled={buttonDisable}>{buttonText}</button>
       </StyledAlbumPreferenceForm>
     </AlbumPreferenceFormWrapper>
   )
