@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService'
 
-import AlbumPreferenceForm from '../AlbumReportForm/AlbumPreferenceForm'
+import AlbumPreferenceForm from '../AlbumPreferenceForm/AlbumPreferenceForm'
 import {
   StyledAlbumWrapper,
   StyledAlbumDiv,
