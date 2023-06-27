@@ -115,7 +115,7 @@ const SpotifyPlayer = (props) => {
 }
 
 const TrackWrapper = (props) => {
-  if (!props.isActive) {
+  if (!props.isActive || !props.currentTrack) {
     return (
       <StyledTrackWrapper>
         <b>Loading player...</b>
