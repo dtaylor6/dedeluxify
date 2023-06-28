@@ -21,13 +21,13 @@ const AlbumPreferenceForm = (props) => {
     setButtonDisable(true);
     setButtonText('Saving...');
     const checkboxes = event.target.querySelectorAll('input');
-    const uris = [];
+
+    let preferenceStr = '';
     checkboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        uris.push(checkbox.id);
-      }
+      preferenceStr += checkbox.checked ? '1' : '0';
     });
-    await PostTrackPreferences(uris);
+
+    await PostTrackPreferences(albumUri, tracks.data.length, preferenceStr);
     setButtonText('Save Preferences');
     setButtonDisable(false);
   };
@@ -52,7 +52,7 @@ const CheckboxWrapper = (props) => {
     <li title={props.track.name}>
       <StyledLabel>
         <StyledCheckbox
-          type='checkbox'
+          type="checkbox"
           id={props.track.uri}
           defaultChecked={true}
         />

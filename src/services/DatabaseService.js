@@ -16,13 +16,15 @@ const FetchTrackPreferences = (uri) => {
   );
 };
 
-const PostTrackPreferences = (uris) => {
+const PostTrackPreferences = (uri, numTracks, preferences) => {
   return(
     axios
       .post(
         'http://localhost:3000/api/trackPreferences/',
         {
-          uris
+          uri,
+          numTracks,
+          preferences
         },
         {
           headers: GetAuthHeader()
