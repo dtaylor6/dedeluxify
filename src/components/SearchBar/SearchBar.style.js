@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const StyledSearchBar = styled.div`
+const StyledSearchBar = styled.div`
   flex: 1;
   width: 100%;
   height: calc(100vh - 5rem); /*Subtract height of player*/
@@ -10,14 +10,14 @@ export const StyledSearchBar = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-content: flex-start;
-`
+`;
 
-export const SearchInputContainer = styled.div`
+const SearchInputContainer = styled.div`
   width: 100%;
   height: auto;
   text-align: center;
-`
-export const StyledSearchInput = styled.input`
+`;
+const StyledSearchInput = styled.input`
   width: 50%;
   border-radius: 0.25rem;
   border: 0.1rem solid black;
@@ -30,9 +30,9 @@ export const StyledSearchInput = styled.input`
     outline: 0;
     border: 0.1rem solid #2886fd;
   }
-`
+`;
 
-export const StyledResults = styled.div`
+const StyledResults = styled.div`
   width: 50%;
   max-height: 100%;
   display: ${props => props.showResults ? 'block' : 'none'};
@@ -41,9 +41,9 @@ export const StyledResults = styled.div`
   border-radius: 0.25rem;
   padding: 0.25rem 0;
   margin-bottom: 0.5rem;
-`
+`;
 
-export const StyledResultButton = styled.button`
+const StyledResultButton = styled.button`
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -61,5 +61,12 @@ export const StyledResultButton = styled.button`
   &:active {
     background-color: #949494;
   }
-`
+`;
 
+export {
+  StyledSearchBar,
+  SearchInputContainer,
+  StyledSearchInput,
+  StyledResults,
+  StyledResultButton
+};

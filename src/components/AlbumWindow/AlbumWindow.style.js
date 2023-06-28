@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const StyledAlbumWrapper = styled.div`
+const StyledAlbumWrapper = styled.div`
   position: absolute;
   z-index: 1;
   height: 100%;
@@ -10,9 +10,9 @@ export const StyledAlbumWrapper = styled.div`
   left: 0;
   display: block;
   text-align: center;
-`
+`;
 
-export const StyledAlbumDiv = styled.div`
+const StyledAlbumDiv = styled.div`
   display: inline-flex;
   flex-direction: column;
   min-height: 15rem;
@@ -24,24 +24,24 @@ export const StyledAlbumDiv = styled.div`
   background-color: rgba(255,255,255,1);
   border-radius: 0.25rem;
   border: 0.1rem solid black;
-`
+`;
 
-export const AlbumCover = styled.img`
+const AlbumCover = styled.img`
   float: left;
   width: 9rem;
   height: 9rem;
   margin-left: 1rem;
   margin-right: 0.75rem;
-`
+`;
 
-export const AlbumSide = styled.div`
+const AlbumSide = styled.div`
   text-align: left;
   display: block;
   height: 9rem;
   margin-bottom: 0.5rem;
-`
+`;
 
-export const AlbumName = styled.div`
+const AlbumName = styled.div`
   font-weight: bold;
   margin-bottom: 0.2rem;
   margin-right: 0;
@@ -49,21 +49,21 @@ export const AlbumName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-`
+`;
 
-export const AlbumArtist = styled.div`
+const AlbumArtist = styled.div`
   margin-bottom: 0.2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-`
+`;
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   margin-top: 0.5rem;
   margin-right: 0.5rem;
-`
+`;
 
-export const CloseButton = styled.button`
+const CloseButton = styled.button`
   font-size: 2rem;
   margin-left: auto;
   width: 3rem;
@@ -81,4 +81,15 @@ export const CloseButton = styled.button`
     position:relative;
     top:1px;
   }
-`
+`;
+
+export {
+  StyledAlbumWrapper,
+  StyledAlbumDiv,
+  AlbumCover,
+  AlbumSide,
+  AlbumName,
+  AlbumArtist,
+  StyledButton,
+  CloseButton
+};

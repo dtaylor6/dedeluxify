@@ -1,18 +1,18 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 // Wrapper prevents auto scroll bar from repositioning neighbor elements
-export const AlbumPreferenceFormWrapper = styled.div`
+const AlbumPreferenceFormWrapper = styled.div`
   height: '20rem;'
-`
+`;
 
-export const StyledAlbumPreferenceForm = styled.form`
+const StyledAlbumPreferenceForm = styled.form`
   overflow-y: auto;
   height: auto;
   max-height: 19rem;
   margin-bottom: 0.5rem;
-`
+`;
 
-export const StyledCheckboxWrapper = styled.ol`
+const StyledCheckboxWrapper = styled.ol`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   gap: 10px;
@@ -24,15 +24,23 @@ export const StyledCheckboxWrapper = styled.ol`
   margin-right: 1rem;
   margin-left: 1rem;
   padding: 0;
-`
+`;
 
-export const StyledLabel = styled.label`
+const StyledLabel = styled.label`
   width: 12em;
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`
+`;
 
-export const StyledCheckbox = styled.input`
-`
+const StyledCheckbox = styled.input`
+`;
+
+export {
+  AlbumPreferenceFormWrapper,
+  StyledAlbumPreferenceForm,
+  StyledCheckboxWrapper,
+  StyledLabel,
+  StyledCheckbox
+};

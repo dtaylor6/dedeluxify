@@ -1,13 +1,13 @@
-import React from 'react'
-import LoginRedirect from '../LoginRedirect/LoginRedirect'
+import React from 'react';
+import LoginRedirect from '../LoginRedirect/LoginRedirect';
 import {
   BrowserRouter,
   Routes,
   Route
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-import Home from '../Home/Home'
-import StyledApp from './App.style'
+import Home from '../Home/Home';
+import StyledApp from './App.style';
 
 const App = () => {
   return (
@@ -15,13 +15,13 @@ const App = () => {
       <BrowserRouter>
         <>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<LoginRedirect />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginRedirect />} />
           </Routes>
         </>
       </BrowserRouter>
     </StyledApp>
-  )
-}
+  );
+};
 
-export default App
+export default App;

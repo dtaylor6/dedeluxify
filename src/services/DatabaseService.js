@@ -1,8 +1,8 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { GetAuthHeader } from './SpotifyAuthService'
+import { GetAuthHeader } from './SpotifyAuthService';
 
-export const FetchTrackPreferences = (uri) => {
+const FetchTrackPreferences = (uri) => {
   return (
     axios
       .get(
@@ -13,10 +13,10 @@ export const FetchTrackPreferences = (uri) => {
           headers: GetAuthHeader()
         }
       )
-  )
-}
+  );
+};
 
-export const PostTrackPreferences = (uris) => {
+const PostTrackPreferences = (uris) => {
   return(
     axios
       .post(
@@ -28,5 +28,10 @@ export const PostTrackPreferences = (uris) => {
           headers: GetAuthHeader()
         }
       )
-  )
-}
+  );
+};
+
+export {
+  FetchTrackPreferences,
+  PostTrackPreferences
+};

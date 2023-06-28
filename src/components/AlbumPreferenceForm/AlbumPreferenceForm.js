@@ -1,36 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import useDatabaseResponse from '../hooks/useDatabaseResponse'
-import { FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService'
+import useDatabaseResponse from '../hooks/useDatabaseResponse';
+import { FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService';
 import {
   AlbumPreferenceFormWrapper,
   StyledAlbumPreferenceForm,
   StyledLabel,
   StyledCheckbox,
   StyledCheckboxWrapper
-} from './AlbumPreferenceForm.style'
+} from './AlbumPreferenceForm.style';
 
 const AlbumPreferenceForm = (props) => {
-  const albumUri = props.albumUri
-  const tracks = useDatabaseResponse(FetchTrackPreferences, [albumUri])
-  const [buttonText, setButtonText] = useState('Save Preferences')
-  const [buttonDisable, setButtonDisable] = useState(false)
+  const albumUri = props.albumUri;
+  const tracks = useDatabaseResponse(FetchTrackPreferences, [albumUri]);
+  const [buttonText, setButtonText] = useState('Save Preferences');
+  const [buttonDisable, setButtonDisable] = useState(false);
 
   const SavePreferences = async (event) => {
-    event.preventDefault()
-    setButtonDisable(true)
-    setButtonText('Saving...')
-    const checkboxes = event.target.querySelectorAll('input')
-    const uris = []
+    event.preventDefault();
+    setButtonDisable(true);
+    setButtonText('Saving...');
+    const checkboxes = event.target.querySelectorAll('input');
+    const uris = [];
     checkboxes.forEach(checkbox => {
       if (checkbox.checked) {
-        uris.push(checkbox.id)
+        uris.push(checkbox.id);
       }
-    })
-    await PostTrackPreferences(uris)
-    setButtonText('Save Preferences')
-    setButtonDisable(false)
-  }
+    });
+    await PostTrackPreferences(uris);
+    setButtonText('Save Preferences');
+    setButtonDisable(false);
+  };
 
   return(!tracks.loading &&
     <AlbumPreferenceFormWrapper>
@@ -44,8 +44,8 @@ const AlbumPreferenceForm = (props) => {
         <button type="submit" disabled={buttonDisable}>{buttonText}</button>
       </StyledAlbumPreferenceForm>
     </AlbumPreferenceFormWrapper>
-  )
-}
+  );
+};
 
 const CheckboxWrapper = (props) => {
   return (
@@ -59,7 +59,7 @@ const CheckboxWrapper = (props) => {
         <b>{props.index+1}.</b> {props.track.name}
       </StyledLabel>
     </li>
-  )
-}
+  );
+};
 
-export default AlbumPreferenceForm
+export default AlbumPreferenceForm;

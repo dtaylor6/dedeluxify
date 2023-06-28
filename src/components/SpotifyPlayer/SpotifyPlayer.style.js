@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const PlayerContainer = styled.div`
+const PlayerContainer = styled.div`
   height: 5rem;
   width: 100%;
   align-items: center;
@@ -17,9 +17,9 @@ export const PlayerContainer = styled.div`
     min-width: 0;
     content: '';
   }
-`
+`;
 
-export const StyledTrackWrapper = styled.div`
+const StyledTrackWrapper = styled.div`
   flex: 1;
   text-align: center;
   display: inline-block;
@@ -27,30 +27,30 @@ export const StyledTrackWrapper = styled.div`
   height: auto;
   margin-left: 1%;
   position: relative;
-`
+`;
 
-export const StyledButtonWrapper = styled.div`
+const StyledButtonWrapper = styled.div`
   flex: 1;
   display: flex;
   text-align: center;
   justify-content: center;
   min-width: auto;
   white-space: nowrap;
-`
+`;
 
-export const NowPlayingCover = styled.img`
+const NowPlayingCover = styled.img`
   float: left;
   width: 4rem;
   height: 4rem;
   margin-right: 0.75rem;
-`
+`;
 
-export const NowPlayingSide = styled.div`
+const NowPlayingSide = styled.div`
   text-align: left;
   margin-top: 0.5rem;
-`
+`;
 
-export const NowPlayingName = styled.div`
+const NowPlayingName = styled.div`
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.2em;
@@ -58,16 +58,17 @@ export const NowPlayingName = styled.div`
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
-`
+`;
 
-export const NowPlayingArtist = styled.div`
+const NowPlayingArtist = styled.div`
   margin-bottom: 0.2rem;
   font-size: .75rem;
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
-`
-export const StyledTrackButton = styled.button`
+`;
+
+const StyledTrackButton = styled.button`
   cursor: pointer;
   border: none;
   height: 3rem;
@@ -79,9 +80,9 @@ export const StyledTrackButton = styled.button`
     position:relative;
     top:1px;
   }
-`
+`;
 
-export const StyledPlayButton = styled.button`
+const StyledPlayButton = styled.button`
   cursor: pointer;
   border: none;
   height: 3rem;
@@ -89,4 +90,16 @@ export const StyledPlayButton = styled.button`
   padding: 0 0;
   background: none;
   margin: 0 1em;
-`
+`;
+
+export {
+  PlayerContainer,
+  StyledTrackWrapper,
+  StyledButtonWrapper,
+  NowPlayingCover,
+  NowPlayingSide,
+  NowPlayingName,
+  NowPlayingArtist,
+  StyledTrackButton,
+  StyledPlayButton
+};

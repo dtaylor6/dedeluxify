@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService'
+import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService';
 
-import AlbumPreferenceForm from '../AlbumPreferenceForm/AlbumPreferenceForm'
+import AlbumPreferenceForm from '../AlbumPreferenceForm/AlbumPreferenceForm';
 import {
   StyledAlbumWrapper,
   StyledAlbumDiv,
@@ -12,28 +12,28 @@ import {
   AlbumArtist,
   CloseButton,
   StyledButton
-} from './AlbumWindow.style'
+} from './AlbumWindow.style';
 
 const Play = (albumUri, setAlbum) => {
-  PlayAlbum(albumUri)
-  setAlbum(undefined)
-}
+  PlayAlbum(albumUri);
+  setAlbum(undefined);
+};
 
 const Queue = (albumUri, setAlbum) => {
-  QueueAlbum(albumUri)
-  setAlbum(undefined)
-}
+  QueueAlbum(albumUri);
+  setAlbum(undefined);
+};
 
 const AlbumWrapper = (props) => {
   return(
     <StyledAlbumWrapper>
       <AlbumDiv album={props.album} setAlbum={props.setAlbum} />
     </StyledAlbumWrapper>
-  )
-}
+  );
+};
 
 const AlbumDiv = (props) => {
-  const [showForm, setShowForm] = useState(false)
+  const [showForm, setShowForm] = useState(false);
 
   return(
     <StyledAlbumDiv id='album-div'>
@@ -53,7 +53,7 @@ const AlbumDiv = (props) => {
       {showForm && <AlbumPreferenceForm albumUri={props.album.uri} />
       }
     </StyledAlbumDiv>
-  )
-}
+  );
+};
 
-export default AlbumWrapper
+export default AlbumWrapper;

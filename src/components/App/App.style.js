@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledApp = styled.div`
   position: absolute;
@@ -12,5 +12,6 @@ const StyledApp = styled.div`
   flex-direction: column;
   align-items: stretch;
   background-color: #F3F3F3;
-`
-export default StyledApp
+`;
+
+export default StyledApp;

@@ -1,8 +1,8 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { GetAuthHeader } from './SpotifyAuthService'
+import { GetAuthHeader } from './SpotifyAuthService';
 
-export const TransferPlayback = (device_id) => {
+const TransferPlayback = (device_id) => {
   return (
     axios
       .put(
@@ -15,12 +15,12 @@ export const TransferPlayback = (device_id) => {
           headers: GetAuthHeader()
         }
       )
-  )
-}
+  );
+};
 
-export const SearchAlbums = (search) => {
+const SearchAlbums = (search) => {
   if (search === '') {
-    return undefined
+    return undefined;
   }
 
   return (
@@ -36,10 +36,10 @@ export const SearchAlbums = (search) => {
       .then(
         response => response.data
       )
-  )
-}
+  );
+};
 
-export const PlayAlbum = (uri) => {
+const PlayAlbum = (uri) => {
   return (
     axios
       .get(
@@ -50,10 +50,10 @@ export const PlayAlbum = (uri) => {
           headers: GetAuthHeader()
         }
       )
-  )
-}
+  );
+};
 
-export const QueueAlbum = (uri) => {
+const QueueAlbum = (uri) => {
   return (
     axios
       .get(
@@ -64,5 +64,12 @@ export const QueueAlbum = (uri) => {
           headers: GetAuthHeader()
         }
       )
-  )
-}
+  );
+};
+
+export {
+  TransferPlayback,
+  SearchAlbums,
+  PlayAlbum,
+  QueueAlbum
+};

@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 // Hook for setting data from async database response
 const useDatabaseResponse = (serviceCallback, args) => {
-  const [response, setResponse] = useState(undefined)
-  const [loading, setLoading] = useState(true)
-  let isStale = false
+  const [response, setResponse] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  let isStale = false;
 
   const callback = async () => {
-    const serviceResponse = await serviceCallback(...args)
-    serviceResponse['loading'] = false
-    setLoading(false)
+    const serviceResponse = await serviceCallback(...args);
+    serviceResponse['loading'] = false;
+    setLoading(false);
     if (!isStale) {
-      setResponse(serviceResponse)
+      setResponse(serviceResponse);
     }
-  }
+  };
 
   useEffect(() => {
-    callback()
+    callback();
     // Prevent old response from being set as state if hook is called multiple times
-    return () => isStale = true
-  }, [])
+    return () => isStale = true;
+  }, []);
 
-  return loading ? { loading } : response
-}
+  return loading ? { loading } : response;
+};
 
-export default useDatabaseResponse
+export default useDatabaseResponse;
