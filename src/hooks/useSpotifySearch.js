@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { SearchAlbums } from '../../services/SpotifyPlaybackService';
+import { SearchAlbums } from '../services/SpotifyPlaybackService';
 
 // How many ms to wait to search after user stops typing
 const SEARCH_TIMEOUT = 500;

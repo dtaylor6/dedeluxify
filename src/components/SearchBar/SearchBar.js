@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import useSpotifySearch from '../hooks/useSpotifySearch';
+import useSpotifySearch from '../../hooks/useSpotifySearch';
 import AlbumWrapper from '../AlbumWindow/AlbumWindow';
 import {
   StyledSearchBar,

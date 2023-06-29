@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import useDatabaseResponse from '../hooks/useDatabaseResponse';
+import useDatabaseResponse from '../../hooks/useDatabaseResponse';
 import { FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService';
 import {
   AlbumPreferenceFormWrapper,
