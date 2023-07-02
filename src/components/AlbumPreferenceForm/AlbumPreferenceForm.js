@@ -38,7 +38,8 @@ const AlbumPreferenceForm = (props) => {
         <StyledCheckboxWrapper>
           {
             tracks.data
-            && tracks.data.map((track, index) => <CheckboxWrapper key={track.uri} track={track} index={index} />)
+            && tracks.data.map((track, index) =>
+              <CheckboxWrapper key={track.uri} track={track} index={index} checked={track.play} />)
           }
         </StyledCheckboxWrapper>
         <button type="submit" disabled={buttonDisable}>{buttonText}</button>
@@ -54,7 +55,7 @@ const CheckboxWrapper = (props) => {
         <StyledCheckbox
           type="checkbox"
           id={props.track.uri}
-          defaultChecked={true}
+          defaultChecked={props.checked}
         />
         <b>{props.index+1}.</b> {props.track.name}
       </StyledLabel>
