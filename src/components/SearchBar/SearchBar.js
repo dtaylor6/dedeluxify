@@ -66,7 +66,9 @@ const Results = (props) => {
   return (
     <StyledResults id="search-results" showBorder={showBorder} showResults={showResults}>
       {album && <AlbumWrapper album={album} setAlbum={setAlbum} />}
-      { results && results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
+      { results
+        && !results.loading
+        && results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
     </StyledResults>
   );
 };

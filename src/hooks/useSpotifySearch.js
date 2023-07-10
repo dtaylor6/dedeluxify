@@ -8,12 +8,23 @@ const SEARCH_TIMEOUT = 500;
 // Fetch album query from Spotify service
 const useSpotifySearch = (query) => {
   const [results, setResults] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  let isStale = false;
 
   // Wait for user to finish typing before sending search request
   useEffect(() => {
     const getQuery = async () => {
-      const queryResult = await SearchAlbums(query);
-      setResults(queryResult);
+      if (query) {
+        const queryResult = await SearchAlbums(query);
+        queryResult['loading'] = false;
+        setLoading(false);
+        if (!isStale) {
+          setResults(queryResult);
+        }
+      }
+      else {
+        setLoading(false);
+      }
     };
 
     let debouncer = setTimeout(() => {
@@ -22,10 +33,12 @@ const useSpotifySearch = (query) => {
 
     return () => {
       clearTimeout(debouncer);
+      // Prevent old response from being set as state if hook is called multiple times
+      isStale = true;
     };
   }, [query]);
 
-  return results;
+  return loading ? { loading } : results;
 };
 
 export default useSpotifySearch;
