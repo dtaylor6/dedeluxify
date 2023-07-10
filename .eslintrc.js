@@ -50,5 +50,6 @@ module.exports = {
     'react': {
       'version': 'detect'
     }
-  }
+  },
+  'globals': { 'PRODUCTION': true }
 };

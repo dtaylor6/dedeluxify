@@ -1,8 +1,10 @@
-const path = require('path')
+const path = require('path');
+const webpack = require('webpack');
 
-const config = () => {
+const config = (env, argv) => {
   return {
     entry: './src/index.js',
+    mode: argv.mode,
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'main.js'
@@ -11,12 +13,14 @@ const config = () => {
       static: path.resolve(__dirname, 'build'),
       compress: true,
       port: 3000,
-      proxy: {
-        '/api': {
-          target: 'http://localhost:3003/',
-          secure: false
+      proxy: argv.mode == 'development'
+        ? {
+          '/api': {
+            target: 'http://localhost:3003/',
+            secure: false
+          }
         }
-      },
+        :{},
       historyApiFallback: {
         index: 'index.html'
       }
@@ -35,8 +39,13 @@ const config = () => {
           use: [{ loader: '@svgr/webpack', options: { icon: true } }]
         }
       ]
-    }
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+          PRODUCTION: JSON.stringify(argv.mode === 'production')
+      }),
+    ]
   }
-}
+};
 
-module.exports = config
+module.exports = config;

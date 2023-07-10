@@ -2,6 +2,10 @@ import axios from 'axios';
 
 import { GetAuthHeader } from './SpotifyAuthService';
 
+const url = PRODUCTION
+  ? 'https://dedeluxify-backend.onrender.com'
+  : 'http://localhost:3003';
+
 const TransferPlayback = (device_id) => {
   return (
     axios
@@ -26,7 +30,7 @@ const SearchAlbums = (search) => {
   return (
     axios
       .get(
-        'http://localhost:3000/api/spotify/search', {
+        `${url}/api/spotify/search`, {
           params: {
             q: search
           },
@@ -43,7 +47,7 @@ const PlayAlbum = (uri) => {
   return (
     axios
       .get(
-        'http://localhost:3000/api/spotify/play/', {
+        `${url}/api/spotify/play/`, {
           params: {
             uri
           },
@@ -57,7 +61,7 @@ const QueueAlbum = (uri) => {
   return (
     axios
       .get(
-        'http://localhost:3000/api/spotify/queue/', {
+        `${url}/api/spotify/queue/`, {
           params: {
             uri
           },
