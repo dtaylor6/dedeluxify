@@ -1,18 +1,20 @@
 import React from 'react';
 
+import { LoginWrapper, LoginSpan, LoginButton } from './SpotifyLogin.style';
+import SpotifyLogo from '../../../images/Spotify_logo.svg';
+
 const SpotifyLogin = () => {
   const url = PRODUCTION
     ? 'https://dedeluxify-backend.onrender.com/api/spotify/login'
     : 'http://localhost:3003/api/spotify/login';
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <a href={url} >
-          Login with Spotify
-        </a>
-      </header>
-    </div>
+    <LoginWrapper>
+      <LoginButton onClick={() => window.location.href=url}>
+        <SpotifyLogo />
+        <LoginSpan>Log in with Spotify</LoginSpan>
+      </LoginButton>
+    </LoginWrapper>
   );
 };
 
