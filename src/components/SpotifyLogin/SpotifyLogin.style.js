@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 
 const LoginWrapper = styled.div`
-  position: absolute;
   left: 0;
   width: 100%;
+  height: auto;
   overflow: clip;
-  min-height: 100vh;
   font-family: Roboto, Arial, sans-serif;
   background-color: #F3F3F3;
   text-align: center;
+  display: block;
+  overflow: auto;
 `;
 
 const LoginDiv = styled.div`
-  top: 25%;
-  position: fixed;
   width: 100%;
 `;
 
@@ -44,6 +43,7 @@ const LogoDiv = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
+  margin-bottom: 7rem;
 `;
 
 const LogoText = styled.span`
