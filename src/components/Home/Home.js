@@ -10,11 +10,19 @@ const Home = () => {
 
   return (
     <>
-      <SearchBar />
       {(token !== '')?
-        <SpotifyPlayer access_token={token} />
+        <HomePage access_token={token} />
         :<Navigate to="/login" replace={false} />
       }
+    </>
+  );
+};
+
+const HomePage = (props) => {
+  return(
+    <>
+      <SearchBar />
+      <SpotifyPlayer access_token={props.access_token} />
     </>
   );
 };

@@ -23,18 +23,21 @@ const SearchBar = (props) => {
   const [showResults, setShowResults] = useState(false);
   useEffect(() => {
     document.addEventListener('click', (e) => {
-      if (!e.target) {
-        setShowResults(false);
-      }
-      else if (document.getElementById('search-bar').contains(e.target)) {
-        setShowResults(true);
-      }
-      else if (document.getElementById('search-results').contains(e.target)) {
-        setShowResults(true);
-      }
-      else {
-        // Clicked outside the box
-        setShowResults(false);
+      if (document.getElementById('search-bar'))
+      {
+        if (!e.target) {
+          setShowResults(false);
+        }
+        else if (document.getElementById('search-bar').contains(e.target)) {
+          setShowResults(true);
+        }
+        else if (document.getElementById('search-results').contains(e.target)) {
+          setShowResults(true);
+        }
+        else {
+          // Clicked outside the box
+          setShowResults(false);
+        }
       }
     });
   }, []);
