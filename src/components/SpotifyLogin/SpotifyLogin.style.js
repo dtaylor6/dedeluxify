@@ -3,13 +3,18 @@ import styled from 'styled-components';
 const LoginWrapper = styled.div`
   position: absolute;
   left: 0;
-  top: 15%;
   width: 100%;
   overflow: clip;
   min-height: 100vh;
   font-family: Roboto, Arial, sans-serif;
   background-color: #F3F3F3;
   text-align: center;
+`;
+
+const LoginDiv = styled.div`
+  top: 25%;
+  position: fixed;
+  width: 100%;
 `;
 
 const LoginSpan = styled.span`
@@ -34,8 +39,24 @@ const LoginButton = styled.button`
   }
 `;
 
+const LogoDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
+const LogoText = styled.span`
+  text-align: left;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+`;
+
 export {
   LoginWrapper,
+  LoginDiv,
   LoginSpan,
-  LoginButton
+  LoginButton,
+  LogoDiv,
+  LogoText
 };
