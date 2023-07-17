@@ -4,11 +4,9 @@ import {
   LoginWrapper,
   LoginSpan,
   LoginButton,
-  LoginDiv,
-  LogoDiv,
-  LogoText
+  LoginDiv
 } from './SpotifyLogin.style';
-import DedeluxifyLogo from '../../../images/dedeluxify-logo.svg';
+import WebsiteLogo from '../WebsiteLogo/WebsiteLogo';
 import SpotifyLogo from '../../../images/Spotify_logo.svg';
 
 const SpotifyLogin = () => {
@@ -18,7 +16,7 @@ const SpotifyLogin = () => {
 
   return (
     <LoginWrapper>
-      <WebsiteName />
+      <WebsiteLogo height="5rem" width="3rem" margin-top="2rem"/>
       <LoginDiv>
         <h1>Log in</h1>
         <LoginButton onClick={() => window.location.href=url}>
@@ -31,15 +29,6 @@ const SpotifyLogin = () => {
         </LoginButton>
       </LoginDiv>
     </LoginWrapper>
-  );
-};
-
-const WebsiteName = () => {
-  return (
-    <LogoDiv>
-      <DedeluxifyLogo height="5rem" width="3rem" margin-top="3rem"/>
-      <LogoText>edeluxify</LogoText>
-    </LogoDiv>
   );
 };
 
