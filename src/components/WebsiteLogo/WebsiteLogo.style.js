@@ -4,8 +4,8 @@ const LogoDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
-  margin-bottom: 7rem;
+  margin-top: ${props => props.marginTop};
+  margin-bottom: ${props => props.marginBottom};
 `;
 
 const LogoText = styled.span`

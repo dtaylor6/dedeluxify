@@ -5,8 +5,8 @@ import DedeluxifyLogo from '../../../images/dedeluxify-logo.svg';
 
 const WebsiteLogo = (props) => {
   return (
-    <LogoDiv>
-      <DedeluxifyLogo height={props.height} width={props.width} margin-top={props.margin-top}/>
+    <LogoDiv marginTop={props.marginTop} marginBottom={props.marginBottom}>
+      <DedeluxifyLogo height="5rem" width="3rem" />
       <LogoText>edeluxify</LogoText>
     </LogoDiv>
   );

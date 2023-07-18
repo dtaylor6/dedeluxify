@@ -16,7 +16,7 @@ const SpotifyLogin = () => {
 
   return (
     <LoginWrapper>
-      <WebsiteLogo height="5rem" width="3rem" margin-top="2rem"/>
+      <WebsiteLogo marginTop="2rem" marginBottom="7rem" />
       <LoginDiv>
         <h1>Log in</h1>
         <LoginButton onClick={() => window.location.href=url}>
