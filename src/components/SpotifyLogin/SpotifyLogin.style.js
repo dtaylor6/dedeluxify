@@ -32,7 +32,7 @@ const LoginButton = styled.button`
 
   &:hover {
     transition: background-color 0.5s ease;
-    background-color: black;
+    background-color: #191414;
     border-radius: 0.25rem;
     color: #F3F3F3;
   }
