@@ -12,10 +12,7 @@ const Home = () => {
 
   return (
     <>
-      {(token !== '')?
-        <HomePage access_token={token} />
-        :<Navigate to="/login" replace={false} />
-      }
+      {token ? <HomePage access_token={token} /> : <Navigate to="/login" replace={false} />}
     </>
   );
 };
