@@ -16,8 +16,7 @@ const StyledImg = styled.img`
   height: 5rem;
   width: 5rem;
   margin-right: 1rem;
-  margin: 1rem 1rem 1rem auto;
-  float: right;
+  margin: 1rem 3rem 1rem 1rem;
   border: solid rgba(255, 255, 255, 0);
   border-radius: 10rem;
 
@@ -28,6 +27,7 @@ const StyledImg = styled.img`
 
 const ImgWrapper = styled.div`
   flex: 1;
+  text-align: right;
 `;
 
 export {
