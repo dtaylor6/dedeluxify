@@ -18,6 +18,7 @@ const StyledInput = styled.input`
   margin-right: 1rem;
   margin: 2rem 3rem 1rem 1rem;
   border: solid rgba(255, 255, 255, 0);
+  border: ${props => props.showWindow ? 'solid #1DB954;' : 'solid rgba(255, 255, 255, 0)'};
   border-radius: 10rem;
 
   &:hover {

@@ -35,7 +35,7 @@ const WebsiteHeader = (props) => {
     <HeaderWrapper>
       <WebsiteLogo marginTop="1rem" marginBottom="2rem" marginLeft="1rem" />
       <ImgWrapper ref={profileRef}>
-        <StyledInput type="image" src={profilePicSrc} />
+        <StyledInput type="image" src={profilePicSrc} showWindow={showWindow} />
         {showWindow && <ProfileWindow />}
       </ImgWrapper>
     </HeaderWrapper>
