@@ -16,7 +16,7 @@ const StyledImg = styled.img`
   height: 5rem;
   width: 5rem;
   margin-right: 1rem;
-  margin: 1rem 3rem 1rem 1rem;
+  margin: 2rem 3rem 1rem 1rem;
   border: solid rgba(255, 255, 255, 0);
   border-radius: 10rem;
 

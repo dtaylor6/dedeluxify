@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, forwardRef } from 'react';
 
 import useSpotifySearch from '../../hooks/useSpotifySearch';
-import AlbumWrapper from '../AlbumWindow/AlbumWindow';
+import AlbumWindow from '../AlbumWindow/AlbumWindow';
 import {
   StyledSearchBar,
   StyledSearchInput,
@@ -75,7 +75,7 @@ const Results = forwardRef((props, ref) => {
 
   return (
     <StyledResults showBorder={showBorder} showResults={props.showResults} ref={ref}>
-      {album && <AlbumWrapper album={album} setAlbum={setAlbum} />}
+      {album && <AlbumWindow album={album} setAlbum={setAlbum} />}
       { props.results
         && !props.results.loading
         && props.results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}

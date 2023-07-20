@@ -24,7 +24,7 @@ const Queue = (albumUri, setAlbum) => {
   setAlbum(undefined);
 };
 
-const AlbumWrapper = (props) => {
+const AlbumWindow = (props) => {
   return(
     <StyledAlbumWrapper>
       <AlbumDiv album={props.album} setAlbum={props.setAlbum} />
@@ -56,4 +56,4 @@ const AlbumDiv = (props) => {
   );
 };
 
-export default AlbumWrapper;
+export default AlbumWindow;
