@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import WebsiteLogo from '../WebsiteLogo/WebsiteLogo';
 import ProfileWindow from '../ProfileWindow/ProfileWindow';
@@ -12,19 +12,31 @@ const DEFAULT_PFP = 'https://i.scdn.co/image/ab6761610000517458efbed422ab4648446
 
 const WebsiteHeader = (props) => {
   const profilePicSrc = props.profilePic ? props.profilePic : DEFAULT_PFP;
-  const profileElement = useRef(null);
+  const profileRef = useRef(null);
 
-  const focusElement = () => {
-    console.log('FOCUSING');
-    profileElement.current.focus();
-  };
+  // Hide search results when clicking outside of search bar or search results box
+  const [showWindow, setShowWindow] = useState(false);
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      if (!e.target) {
+        setShowWindow(false);
+      }
+      else if (profileRef.current && profileRef.current.contains(e.target)){
+        setShowWindow(true);
+      }
+      else {
+        // Clicked outside the box
+        setShowWindow(false);
+      }
+    });
+  }, []);
 
   return(
     <HeaderWrapper>
       <WebsiteLogo marginTop="1rem" marginBottom="2rem" marginLeft="1rem" />
-      <ImgWrapper>
-        <StyledInput type="image" src={profilePicSrc} onClick={focusElement} />
-        <ProfileWindow ref={profileElement} />
+      <ImgWrapper ref={profileRef}>
+        <StyledInput type="image" src={profilePicSrc} />
+        {showWindow && <ProfileWindow />}
       </ImgWrapper>
     </HeaderWrapper>
   );

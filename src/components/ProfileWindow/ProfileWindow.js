@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Logout } from '../../services/SpotifyAuthService';
@@ -9,15 +9,14 @@ const Signout = (navigate) => {
   navigate('/login');
 };
 
-const ProfileWindow = forwardRef((props, ref) => {
+const ProfileWindow = (props) => {
   const navigate = useNavigate();
 
   return(
-    <ProfileWindowWrapper ref={ref}>
+    <ProfileWindowWrapper >
       <StyledButton onClick={() => Signout(navigate)}>Sign out</StyledButton>
     </ProfileWindowWrapper>
   );
-});
-ProfileWindow.displayName = 'ProfileWindow';
+};
 
 export default ProfileWindow;
