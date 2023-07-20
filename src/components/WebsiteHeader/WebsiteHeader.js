@@ -3,7 +3,7 @@ import React from 'react';
 import WebsiteLogo from '../WebsiteLogo/WebsiteLogo';
 import {
   HeaderWrapper,
-  StyledImg,
+  StyledInput,
   ImgWrapper
 } from './WebsiteHeader.style';
 
@@ -15,7 +15,7 @@ const WebsiteHeader = (props) => {
   return(
     <HeaderWrapper>
       <WebsiteLogo marginTop="1rem" marginBottom="2rem" marginLeft="1rem" />
-      <ImgWrapper><StyledImg src={profilePicSrc} /></ImgWrapper>
+      <ImgWrapper><StyledInput type="image" src={profilePicSrc} onClick={() => console.log('test')} /></ImgWrapper>
     </HeaderWrapper>
   );
 };

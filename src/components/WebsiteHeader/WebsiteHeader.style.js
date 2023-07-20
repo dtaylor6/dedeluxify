@@ -12,7 +12,7 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const StyledImg = styled.img`
+const StyledInput = styled.input`
   height: 5rem;
   width: 5rem;
   margin-right: 1rem;
@@ -31,7 +31,7 @@ const ImgWrapper = styled.div`
 `;
 
 export {
-  StyledImg,
+  StyledInput,
   HeaderWrapper,
   ImgWrapper
 };
