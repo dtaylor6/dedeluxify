@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 
 import useSpotifySearch from '../../hooks/useSpotifySearch';
-import AlbumWrapper from '../AlbumWindow/AlbumWindow';
+import AlbumWindow from '../AlbumWindow/AlbumWindow';
 import {
   StyledSearchBar,
   StyledSearchInput,
@@ -13,6 +13,8 @@ import {
 const SearchBar = (props) => {
   const [query, setQuery] = useState('');
   const searchResults = useSpotifySearch(query);
+  const searchInput = useRef(null);
+  const results = useRef(null);
 
   const fetch = (event) => {
     event.preventDefault();
@@ -23,21 +25,18 @@ const SearchBar = (props) => {
   const [showResults, setShowResults] = useState(false);
   useEffect(() => {
     document.addEventListener('click', (e) => {
-      if (document.getElementById('search-bar'))
-      {
-        if (!e.target) {
-          setShowResults(false);
-        }
-        else if (document.getElementById('search-bar').contains(e.target)) {
-          setShowResults(true);
-        }
-        else if (document.getElementById('search-results').contains(e.target)) {
-          setShowResults(true);
-        }
-        else {
-          // Clicked outside the box
-          setShowResults(false);
-        }
+      if (!e.target) {
+        setShowResults(false);
+      }
+      else if (searchInput.current && searchInput.current.contains(e.target)){
+        setShowResults(true);
+      }
+      else if (results.current && results.current.contains(e.target)){
+        setShowResults(true);
+      }
+      else {
+        // Clicked outside the box
+        setShowResults(false);
       }
     });
   }, []);
@@ -45,45 +44,52 @@ const SearchBar = (props) => {
   return (
     <StyledSearchBar>
       <SearchInputContainer>
-        <SearchInput onChange={fetch} />
+        <SearchInput onChange={fetch} ref={searchInput} />
       </SearchInputContainer>
       <Results
         results={(query !== '') ? searchResults : undefined}
         showResults={showResults}
+        ref={results}
       />
     </StyledSearchBar>
   );
 };
 
-const SearchInput = (props) => {
-  return <StyledSearchInput id="search-bar" title="Search" type="search" placeholder="Search" onChange={props.onChange} />;
-};
+const SearchInput = forwardRef((props, ref) => {
+  return (
+    <StyledSearchInput
+      title="Search"
+      type="search"
+      placeholder="Search"
+      onChange={props.onChange}
+      ref={ref}
+    />
+  );
+});
+SearchInput.displayName = 'SearchInput';
 
-const Results = (props) => {
+const Results = forwardRef((props, ref) => {
   let index = 0;
-  const results = props.results;
-  const showResults = props.showResults;
-  const showBorder = results && (results.length > 0);
+  const showBorder = props.results && (props.results.length > 0);
   const [album, setAlbum] = useState(undefined);
 
   return (
-    <StyledResults id="search-results" showBorder={showBorder} showResults={showResults}>
-      {album && <AlbumWrapper album={album} setAlbum={setAlbum} />}
-      { results
-        && !results.loading
-        && results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
+    <StyledResults showBorder={showBorder} showResults={props.showResults} ref={ref}>
+      {album && <AlbumWindow album={album} setAlbum={setAlbum} />}
+      { props.results
+        && !props.results.loading
+        && props.results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
     </StyledResults>
   );
-};
+});
+Results.displayName = 'Results';
 
 const ResultButton = (props) => {
-  const setAlbum = props.setAlbum;
-
   return (
     <div>
       <StyledResultButton
         title={`${props.result.name} | ${props.result.artists[0].name}`}
-        onClick={() => setAlbum(props.result)}
+        onClick={() => props.setAlbum(props.result)}
       >
         <b>{props.result.name}</b> | {props.result.artists[0].name}
       </StyledResultButton>

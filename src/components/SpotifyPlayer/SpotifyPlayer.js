@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { TransferPlayback } from '../../services/SpotifyPlaybackService';
-import { ClearToken } from '../../services/SpotifyAuthService';
+import { Logout } from '../../services/SpotifyAuthService';
 import {
   PlayerContainer,
   StyledTrackWrapper,
@@ -82,7 +82,7 @@ const SpotifyPlayer = (props) => {
 
       player.on('authentication_error', ({ message }) => {
         console.error('Failed to authenticate:', message);
-        ClearToken();
+        Logout();
         navigate('/login');
       });
 

@@ -37,10 +37,31 @@ const StyledLabel = styled.label`
 const StyledCheckbox = styled.input`
 `;
 
+const StyledButton = styled.button`
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  height: 2rem;
+  width: 10rem;
+  text-align: center;
+  border: 0.1rem solid black;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  color: #191414;
+  background-color: #F3F3F3;
+
+  &:hover {
+    transition: background-color 0.5s ease;
+    background-color: #191414;
+    border-radius: 0.25rem;
+    color: #F3F3F3;
+  }
+`;
+
 export {
   AlbumPreferenceFormWrapper,
   StyledAlbumPreferenceForm,
   StyledCheckboxWrapper,
   StyledLabel,
-  StyledCheckbox
+  StyledCheckbox,
+  StyledButton
 };

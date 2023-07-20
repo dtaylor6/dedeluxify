@@ -7,7 +7,8 @@ import {
   StyledAlbumPreferenceForm,
   StyledLabel,
   StyledCheckbox,
-  StyledCheckboxWrapper
+  StyledCheckboxWrapper,
+  StyledButton
 } from './AlbumPreferenceForm.style';
 
 const AlbumPreferenceForm = (props) => {
@@ -42,7 +43,7 @@ const AlbumPreferenceForm = (props) => {
               <CheckboxWrapper key={track.uri} track={track} index={index} checked={track.play} />)
           }
         </StyledCheckboxWrapper>
-        <button type="submit" disabled={buttonDisable}>{buttonText}</button>
+        <StyledButton type="submit" disabled={buttonDisable}>{buttonText}</StyledButton>
       </StyledAlbumPreferenceForm>
     </AlbumPreferenceFormWrapper>
   );
