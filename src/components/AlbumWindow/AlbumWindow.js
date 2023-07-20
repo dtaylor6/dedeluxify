@@ -48,7 +48,7 @@ const AlbumDiv = (props) => {
         </AlbumArtist>
         <StyledButton onClick={() => Play(props.album.uri, props.setAlbum)}>Play</StyledButton>
         <StyledButton onClick={() => Queue(props.album.uri, props.setAlbum)}>Queue</StyledButton>
-        <StyledButton onClick={() => setShowForm(!showForm)}>Set Track Preferences</StyledButton>
+        <StyledButton onClick={() => setShowForm(!showForm)}>Set Tracks</StyledButton>
       </AlbumSide>
       {showForm && <AlbumPreferenceForm albumUri={props.album.uri} />
       }
