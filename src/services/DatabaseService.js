@@ -37,7 +37,22 @@ const PostTrackPreferences = (uri, numTracks, preferences) => {
   );
 };
 
+const DeleteTrackPreferences = (uri) => {
+  return (
+    axios
+      .delete(
+        `${url}/api/trackPreferences/`, {
+          params: {
+            uri
+          },
+          headers: GetAuthHeader()
+        }
+      )
+  );
+};
+
 export {
   FetchTrackPreferences,
-  PostTrackPreferences
+  PostTrackPreferences,
+  DeleteTrackPreferences
 };
