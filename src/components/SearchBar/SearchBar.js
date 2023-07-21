@@ -16,6 +16,13 @@ const SearchBar = (props) => {
   const searchInput = useRef(null);
   const results = useRef(null);
 
+  const [album, setAlbum] = useState(undefined);
+  const albumRef = useRef(undefined);
+  const setAlbumFunc = (val) => {
+    albumRef.current = val;
+    setAlbum(val);
+  };
+
   const fetch = (event) => {
     event.preventDefault();
     setQuery(event.target.value);
@@ -35,8 +42,10 @@ const SearchBar = (props) => {
         setShowResults(true);
       }
       else {
-        // Clicked outside the box
-        setShowResults(false);
+        if (!albumRef.current) {
+          // Clicked outside the box without album window open
+          setShowResults(false);
+        }
       }
     });
   }, []);
@@ -50,6 +59,8 @@ const SearchBar = (props) => {
         results={(query !== '') ? searchResults : undefined}
         showResults={showResults}
         ref={results}
+        album={album}
+        setAlbum={setAlbumFunc}
       />
     </StyledSearchBar>
   );
@@ -71,14 +82,15 @@ SearchInput.displayName = 'SearchInput';
 const Results = forwardRef((props, ref) => {
   let index = 0;
   const showBorder = props.results && (props.results.length > 0);
-  const [album, setAlbum] = useState(undefined);
 
   return (
     <StyledResults showBorder={showBorder} showResults={props.showResults} ref={ref}>
-      {album && <AlbumWindow album={album} setAlbum={setAlbum} />}
-      { props.results
+      {props.album && <AlbumWindow album={props.album} setAlbum={props.setAlbum} />}
+      {
+        props.results
         && !props.results.loading
-        && props.results.map(result => <ResultButton result={result} setAlbum={setAlbum} key={index++} />)}
+        && props.results.map(result => <ResultButton result={result} setAlbum={props.setAlbum} key={index++} />)
+      }
     </StyledResults>
   );
 });
