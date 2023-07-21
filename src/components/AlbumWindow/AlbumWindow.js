@@ -34,10 +34,11 @@ const AlbumWindow = (props) => {
 
 const AlbumDiv = (props) => {
   const [showForm, setShowForm] = useState(false);
+  const [buttonDisable, setButtonDisable] = useState(false);
 
   return(
     <StyledAlbumDiv id='album-div'>
-      <CloseButton onClick={() => props.setAlbum(undefined)}>X</CloseButton>
+      <CloseButton disabled={buttonDisable} onClick={() => props.setAlbum(undefined)}>X</CloseButton>
       <AlbumSide>
         <AlbumCover src={props.album.images[0].url} alt="" />
         <AlbumName title={props.album.name}>
@@ -46,11 +47,24 @@ const AlbumDiv = (props) => {
         <AlbumArtist title={`${props.album.artists[0].name}`}>
           {props.album.artists[0].name}
         </AlbumArtist>
-        <StyledButton onClick={() => Play(props.album.uri, props.setAlbum)}>Play</StyledButton>
-        <StyledButton onClick={() => Queue(props.album.uri, props.setAlbum)}>Queue</StyledButton>
-        <StyledButton onClick={() => setShowForm(!showForm)}>Set Tracks</StyledButton>
+        <StyledButton disabled={buttonDisable} onClick={() => Play(props.album.uri, props.setAlbum)}>
+          Play
+        </StyledButton>
+        <StyledButton disabled={buttonDisable} onClick={() => Queue(props.album.uri, props.setAlbum)}>
+          Queue
+        </StyledButton>
+        <StyledButton disabled={buttonDisable} onClick={() => setShowForm(!showForm)}>
+          Set Tracks
+        </StyledButton>
       </AlbumSide>
-      {showForm && <AlbumPreferenceForm albumUri={props.album.uri} setShowForm={setShowForm}/>
+      {
+        showForm &&
+        <AlbumPreferenceForm
+          albumUri={props.album.uri}
+          setShowForm={setShowForm}
+          buttonDisable={buttonDisable}
+          setButtonDisable={setButtonDisable}
+        />
       }
     </StyledAlbumDiv>
   );

@@ -15,11 +15,10 @@ const AlbumPreferenceForm = (props) => {
   const albumUri = props.albumUri;
   const tracks = useDatabaseResponse(FetchTrackPreferences, [albumUri]);
   const [buttonText, setButtonText] = useState('Save Preferences');
-  const [buttonDisable, setButtonDisable] = useState(false);
 
   const SavePreferences = async (event) => {
     event.preventDefault();
-    setButtonDisable(true);
+    props.setButtonDisable(true);
     setButtonText('Saving...');
     const checkboxes = event.target.querySelectorAll('input');
 
@@ -30,7 +29,7 @@ const AlbumPreferenceForm = (props) => {
 
     await PostTrackPreferences(albumUri, tracks.data.length, preferenceStr);
     setButtonText('Save Preferences');
-    setButtonDisable(false);
+    props.setButtonDisable(false);
     props.setShowForm(false); // Close form
   };
 
@@ -44,8 +43,13 @@ const AlbumPreferenceForm = (props) => {
               <CheckboxWrapper key={track.uri} track={track} index={index} checked={track.play} />)
           }
         </StyledCheckboxWrapper>
-        <StyledButton type="submit" disabled={buttonDisable}>{buttonText}</StyledButton>
-        <DeleteButton albumUri={props.albumUri} setShowForm={props.setShowForm} />
+        <StyledButton type="submit" disabled={props.buttonDisable}>{buttonText}</StyledButton>
+        <DeleteButton
+          albumUri={props.albumUri}
+          setShowForm={props.setShowForm}
+          buttonDisable={props.buttonDisable}
+          setButtonDisable={props.setButtonDisable}
+        />
       </StyledAlbumPreferenceForm>
     </AlbumPreferenceFormWrapper>
   );
@@ -68,21 +72,20 @@ const CheckboxWrapper = (props) => {
 
 const DeleteButton = (props) => {
   const [buttonText, setButtonText] = useState('Delete Preferences');
-  const [buttonDisable, setButtonDisable] = useState(false);
 
   const DeletePreferences = async (event) => {
     event.preventDefault();
-    setButtonDisable(true);
+    props.setButtonDisable(true);
     setButtonText('Deleting...');
 
     await DeleteTrackPreferences(props.albumUri);
-    setButtonDisable(false);
+    props.setButtonDisable(false);
     setButtonText('Delete Preferences');
     props.setShowForm(false); // Close form
   };
 
   return(
-    <StyledButton disabled={buttonDisable} onClick={DeletePreferences}>
+    <StyledButton disabled={props.buttonDisable} onClick={DeletePreferences}>
       {buttonText}
     </StyledButton>
   );
