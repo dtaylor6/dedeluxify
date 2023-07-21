@@ -37,8 +37,9 @@ const StyledResults = styled.div`
   /* Prevent border from being displayed with no search results */
   border: ${props => props.showBorder ? 'thin solid black' : 'none'};
   border-radius: 0.25rem;
-  padding: 0.25rem 0;
+  padding: ${props => props.showBorder ? '0.25rem 0' : 'none'};
   margin-bottom: 0.5rem;
+  background-color: white;
 `;
 
 const StyledResultButton = styled.button`
@@ -47,10 +48,10 @@ const StyledResultButton = styled.button`
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
-  background-color: #F3F3F3;
   border-width: 0;
   cursor: pointer;
   font-size: 1rem;
+  background-color: white;
 
   &:hover {
     background-color: #D2D2D2;
