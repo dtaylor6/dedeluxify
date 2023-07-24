@@ -12,12 +12,17 @@ import {
   NowPlayingName,
   NowPlayingArtist,
   StyledTrackButton,
-  StyledPlayButton
+  StyledPlayButton,
+  VolumeWrapper,
+  StyledSlider
 } from './SpotifyPlayer.style';
+
 import NextIcon from '../../../images/next-button.svg';
 import PreviousIcon from '../../../images/previous-button.svg';
 import PlayIcon from '../../../images/play-button.svg';
 import PauseIcon from '../../../images/pause-button.svg';
+import VolumeIcon from '../../../images/volume-icon.svg';
+import MuteIcon from '../../../images/mute-icon.svg';
 
 const track = {
   name: '',
@@ -109,6 +114,7 @@ const SpotifyPlayer = (props) => {
           isActive={isActive}
           player={player}
         />
+        <VolumeContainer player={player} />
       </PlayerContainer>
     </>
   );
@@ -172,6 +178,49 @@ const PlayButton = (props) => {
     <StyledPlayButton onClick={props.onClick} title={title}>
       { props.isPaused ? <PlayIcon /> : <PauseIcon /> }
     </StyledPlayButton>
+  );
+};
+
+const VolumeContainer = (props) => {
+  return(
+    <VolumeWrapper>
+      <VolumeIcon height="1.5rem" width="1.5rem" />
+      <VolumeSlider player={props.player} />
+    </VolumeWrapper>
+  );
+};
+
+const VolumeSlider = (props) => {
+  const [sliderVal, setSliderVal] = useState(50);
+  const [volume, setVolume]  = useState(50);
+
+  let isStale = false;
+  const getPlayerVolume = async () => {
+    if (props.player) {
+      setVolume(sliderVal);
+      await props.player.setVolume(sliderVal / 100);
+      const currVolume = await props.player.getVolume();
+      if (!isStale) {
+        setVolume(currVolume * 100);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getPlayerVolume();
+    return () => isStale = true; // Prevent promise race condition
+  }, [sliderVal]);
+
+  return(
+    <StyledSlider
+      type="range"
+      min="0"
+      max="100"
+      value={volume}
+      onChange={(event) => setSliderVal(event.target.value)}
+    >
+      {props.children}
+    </StyledSlider>
   );
 };
 

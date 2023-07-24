@@ -11,12 +11,6 @@ const PlayerContainer = styled.div`
   border-top: thin solid;
   background-color: white;
   z-index: 2;
-
-  &:after {
-    flex: 1;
-    min-width: 0;
-    content: '';
-  }
 `;
 
 const StyledTrackWrapper = styled.div`
@@ -75,6 +69,13 @@ const StyledTrackButton = styled.button`
   width: 3rem;
   padding: 0 0;
   background: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: 1;
+  }
 
   &:active {
     position:relative;
@@ -89,7 +90,33 @@ const StyledPlayButton = styled.button`
   width: 3rem;
   padding: 0 0;
   background: none;
-  margin: 0 1em;
+  margin: 0 1rem;
+`;
+
+const VolumeWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+const StyledSlider = styled.input`
+  width: 10rem;
+  height: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+  max-width: 15vw;
+  background: #d3d3d3;
+  accent-color: black;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 1rem;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export {
@@ -101,5 +128,7 @@ export {
   NowPlayingName,
   NowPlayingArtist,
   StyledTrackButton,
-  StyledPlayButton
+  StyledPlayButton,
+  VolumeWrapper,
+  StyledSlider
 };
