@@ -249,6 +249,7 @@ const VolumeSlider = (props) => {
       type="range"
       min="0"
       max="100"
+      title="Volume"
       value={props.sliderVal}
       onChange={changeFunc}
     >
@@ -258,7 +259,7 @@ const VolumeSlider = (props) => {
 };
 
 const VolumeButton = (props) => {
-  const title = props.isMute ? 'Mute' : 'Unmute';
+  const title = props.isMuted ? 'Unmute' : 'Mute';
 
   return (
     <StyledVolumeButton onClick={props.onClick} title={title}>
