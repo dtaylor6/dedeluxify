@@ -119,6 +119,27 @@ const StyledSlider = styled.input`
   }
 `;
 
+const StyledVolumeButton = styled.button`
+  cursor: pointer;
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0;
+  margin: 0;
+  background: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:hover ~ input {
+    opacity: 1;
+  }
+`;
+
 export {
   PlayerContainer,
   StyledTrackWrapper,
@@ -130,5 +151,6 @@ export {
   StyledTrackButton,
   StyledPlayButton,
   VolumeWrapper,
-  StyledSlider
+  StyledSlider,
+  StyledVolumeButton
 };
