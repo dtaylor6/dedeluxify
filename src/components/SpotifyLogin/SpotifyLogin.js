@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   LoginWrapper,
@@ -6,10 +7,21 @@ import {
   LoginButton,
   LoginDiv
 } from './SpotifyLogin.style';
+import { SetPreview } from '../../services/SpotifyAuthService';
 import WebsiteLogo from '../WebsiteLogo/WebsiteLogo';
 import SpotifyLogo from '../../../images/Spotify_logo.svg';
 
+const spotifyLogin = (url) => {
+  window.location.href=url;
+};
+
+const previewLogin = (navigate) => {
+  SetPreview();
+  navigate('/');
+};
+
 const SpotifyLogin = () => {
+  const navigate = useNavigate();
   const url = PRODUCTION
     ? 'https://dedeluxify-backend.onrender.com/api/spotify/login'
     : 'http://localhost:3003/api/spotify/login';
@@ -19,12 +31,12 @@ const SpotifyLogin = () => {
       <WebsiteLogo marginTop="2rem" marginBottom="7rem" />
       <LoginDiv>
         <h1>Log in</h1>
-        <LoginButton onClick={() => window.location.href=url}>
+        <LoginButton onClick={() => spotifyLogin(url)}>
           <SpotifyLogo />
           <LoginSpan>Log in with Spotify</LoginSpan>
         </LoginButton>
         <br/>
-        <LoginButton onClick={() => console.log('Preview mode')}>
+        <LoginButton onClick={() => previewLogin(navigate)}>
           <LoginSpan>Preview without logging in</LoginSpan>
         </LoginButton>
       </LoginDiv>
