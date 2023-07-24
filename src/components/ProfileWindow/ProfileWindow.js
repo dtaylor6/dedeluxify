@@ -7,6 +7,8 @@ import { ProfileWindowWrapper, StyledButton } from './ProfileWindow.style';
 const Signout = (navigate) => {
   Logout();
   navigate('/login');
+  // Force web browser to kill player on signout
+  window.location.reload();
 };
 
 const ProfileWindow = (props) => {
