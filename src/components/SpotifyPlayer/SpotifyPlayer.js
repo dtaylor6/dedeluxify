@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { TransferPlayback } from '../../services/SpotifyPlaybackService';
@@ -12,12 +12,20 @@ import {
   NowPlayingName,
   NowPlayingArtist,
   StyledTrackButton,
-  StyledPlayButton
+  StyledPlayButton,
+  VolumeWrapper,
+  StyledSlider,
+  StyledVolumeButton
 } from './SpotifyPlayer.style';
+
 import NextIcon from '../../../images/next-button.svg';
 import PreviousIcon from '../../../images/previous-button.svg';
 import PlayIcon from '../../../images/play-button.svg';
 import PauseIcon from '../../../images/pause-button.svg';
+import VolumeIcon from '../../../images/volume-icon.svg';
+import MuteIcon from '../../../images/mute-icon.svg';
+
+const INIT_VOLUME = 50;
 
 const track = {
   name: '',
@@ -51,7 +59,7 @@ const SpotifyPlayer = (props) => {
       const player = new window.Spotify.Player({
         name: 'Web Playback SDK',
         getOAuthToken: cb => { cb(props.access_token); },
-        volume: 0.5
+        volume: (INIT_VOLUME / 100)
       });
 
       setPlayer(player);
@@ -109,6 +117,7 @@ const SpotifyPlayer = (props) => {
           isActive={isActive}
           player={player}
         />
+        <VolumeContainer player={player} />
       </PlayerContainer>
     </>
   );
@@ -172,6 +181,92 @@ const PlayButton = (props) => {
     <StyledPlayButton onClick={props.onClick} title={title}>
       { props.isPaused ? <PlayIcon /> : <PauseIcon /> }
     </StyledPlayButton>
+  );
+};
+
+const VolumeContainer = (props) => {
+  const [isMuted, setIsMuted] = useState(false);
+  const [sliderVal, setSliderVal] = useState(INIT_VOLUME);
+
+  // Saves previous volume when toggling mute
+  const volRef = useRef(INIT_VOLUME);
+
+  const clickFunc = () => {
+    setIsMuted(!isMuted);
+    if (!isMuted) {
+      setSliderVal(0);
+    }
+    else {
+      setSliderVal(volRef.current);
+    }
+  };
+
+  useEffect(() => {
+    if (!isMuted) {
+      volRef.current = sliderVal;
+    }
+  }, [sliderVal]);
+
+  return(
+    <VolumeWrapper>
+      <VolumeButton isMuted={isMuted} onClick={clickFunc} />
+      <VolumeSlider
+        player={props.player}
+        sliderVal={sliderVal}
+        setSliderVal={setSliderVal}
+        isMuted={isMuted}
+        setIsMuted={setIsMuted}
+      />
+    </VolumeWrapper>
+  );
+};
+
+const VolumeSlider = (props) => {
+  let isStale = false;
+  const getPlayerVolume = async () => {
+    if (props.player) {
+      await props.player.setVolume(props.sliderVal / 100);
+      const currVolume = await props.player.getVolume();
+      if (!isStale) {
+        props.setSliderVal(currVolume * 100);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getPlayerVolume();
+    return () => isStale = true; // Prevent promise race condition
+  }, [props.sliderVal]);
+
+  const changeFunc = (event) => {
+    // Unmute whenever the slider is changed
+    props.setIsMuted(false);
+    props.setSliderVal(event.target.value);
+  };
+
+  return(
+    <StyledSlider
+      type="range"
+      min="0"
+      max="100"
+      value={props.sliderVal}
+      onChange={changeFunc}
+    >
+      {props.children}
+    </StyledSlider>
+  );
+};
+
+const VolumeButton = (props) => {
+  const title = props.isMute ? 'Mute' : 'Unmute';
+
+  return (
+    <StyledVolumeButton onClick={props.onClick} title={title}>
+      { props.isMuted
+        ? <MuteIcon height="1.5rem" width="1.5rem" />
+        : <VolumeIcon height="1.5rem" width="1.5rem"/>
+      }
+    </StyledVolumeButton>
   );
 };
 
