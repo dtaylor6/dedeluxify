@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { TransferPlayback } from '../../services/SpotifyPlaybackService';
-import { Logout } from '../../services/SpotifyAuthService';
+import { GetPreview, Logout } from '../../services/SpotifyAuthService';
+import PreviewPlayer from './PreviewPlayer';
 import {
   PlayerContainer,
   StyledTrackWrapper,
@@ -28,15 +29,15 @@ import MuteIcon from '../../../images/mute-icon.svg';
 const INIT_VOLUME = 50;
 
 const track = {
-  name: '',
+  name: 'Track 1',
   album: {
     images: [
-      { url: '' }
+      { url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBV7no0jKOmBMx2C_1a_mu2RmQeS7P8ww9jbVYCsk&s' }
     ],
-    name: ''
+    name: 'Album'
   },
   artists: [
-    { name: '' }
+    { name: 'Artist 1' }
   ]
 };
 
@@ -48,59 +49,67 @@ const SpotifyPlayer = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const script = document.createElement('script');
+    if (GetPreview()) {
+      console.log('Preview Mode');
+      const previewPlayer = new PreviewPlayer(currentTrack, setPaused);
+      setPlayer(previewPlayer);
+      setActive(true);
+    }
+    else {
+      const script = document.createElement('script');
 
-    script.src = 'https://sdk.scdn.co/spotify-player.js';
-    script.async = true;
+      script.src = 'https://sdk.scdn.co/spotify-player.js';
+      script.async = true;
 
-    document.body.appendChild(script);
+      document.body.appendChild(script);
 
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const player = new window.Spotify.Player({
-        name: 'Web Playback SDK',
-        getOAuthToken: cb => { cb(props.access_token); },
-        volume: (INIT_VOLUME / 100)
-      });
-
-      setPlayer(player);
-
-      player.setName('Dedeluxify Player');
-
-      player.addListener('ready', ({ device_id }) => {
-        console.log('Ready with Device ID', device_id);
-        TransferPlayback(device_id);
-      });
-
-      player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);
-      });
-
-      player.addListener('player_state_changed', ( state => {
-        if (!state) {
-          return;
-        }
-
-        setTrack(state.track_window.current_track);
-        setPaused(state.paused);
-
-        player.getCurrentState().then( state => {
-          (!state)? setActive(false) : setActive(true);
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const player = new window.Spotify.Player({
+          name: 'Web Playback SDK',
+          getOAuthToken: cb => { cb(props.access_token); },
+          volume: (INIT_VOLUME / 100)
         });
-      }));
 
-      player.on('authentication_error', ({ message }) => {
-        console.error('Failed to authenticate:', message);
-        Logout();
-        navigate('/login');
-      });
+        setPlayer(player);
 
-      player.connect();
-    };
+        player.setName('Dedeluxify Player');
 
-    // Clean up external script after this effect
-    return () => {
-      document.body.removeChild(script);
-    };
+        player.addListener('ready', ({ device_id }) => {
+          console.log('Ready with Device ID', device_id);
+          TransferPlayback(device_id);
+        });
+
+        player.addListener('not_ready', ({ device_id }) => {
+          console.log('Device ID has gone offline', device_id);
+        });
+
+        player.addListener('player_state_changed', ( state => {
+          if (!state) {
+            return;
+          }
+
+          setTrack(state.track_window.current_track);
+          setPaused(state.paused);
+
+          player.getCurrentState().then( state => {
+            (!state)? setActive(false) : setActive(true);
+          });
+        }));
+
+        player.on('authentication_error', ({ message }) => {
+          console.error('Failed to authenticate:', message);
+          Logout();
+          navigate('/login');
+        });
+
+        player.connect();
+      };
+
+      // Clean up external script after this effect
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
   }, []);
 
   return (
