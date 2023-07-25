@@ -29,12 +29,12 @@ import MuteIcon from '../../../images/mute-icon.svg';
 const INIT_VOLUME = 50;
 
 const track = {
-  name: 'Track 1',
+  name: 'Track',
   album: {
     images: [
-      { url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBV7no0jKOmBMx2C_1a_mu2RmQeS7P8ww9jbVYCsk&s' }
+      { url: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Redsquare.png' }
     ],
-    name: 'Album'
+    name: ' A Album'
   },
   artists: [
     { name: 'Artist 1' }
@@ -50,10 +50,19 @@ const SpotifyPlayer = (props) => {
 
   useEffect(() => {
     if (GetPreview()) {
+      // Use fake player without Spotify or database integration
       console.log('Preview Mode');
-      const previewPlayer = new PreviewPlayer(currentTrack, setPaused);
+      const previewPlayer = new PreviewPlayer(setPaused, setTrack);
       setPlayer(previewPlayer);
       setActive(true);
+
+      const fakeAlbum = [];
+      for (let i = 1; i <= 10; i +=1) {
+        const newTrack = structuredClone(track);
+        newTrack['name'] = newTrack['name'] + ' ' + i;
+        fakeAlbum.push(newTrack);
+      }
+      previewPlayer.setAlbum(fakeAlbum);
     }
     else {
       const script = document.createElement('script');
