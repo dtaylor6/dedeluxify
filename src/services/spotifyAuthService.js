@@ -1,3 +1,5 @@
+import { DeleteAllPreferencePreview } from './previewService';
+
 const SPOTIFY_TOKEN_NAME = 'spotify-auth-token';
 const PROFILE_PIC_NAME = 'profile-picture-url';
 const PREVIEW_NAME = 'preview';
@@ -55,7 +57,9 @@ const ClearPreview = () => {
 const Logout = () => {
   ClearToken();
   ClearProfilePic();
+
   ClearPreview();
+  DeleteAllPreferencePreview();
 };
 
 export {

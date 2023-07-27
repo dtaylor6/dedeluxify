@@ -62,11 +62,18 @@ const DeletePreferencePreview = (uri) => {
   window.localStorage.removeItem('album' + uri);
 };
 
+const DeleteAllPreferencePreview = () => {
+  previewAlbums.forEach(album => {
+    window.localStorage.removeItem('album' + album.uri);
+  });
+};
+
 export {
   SearchPreview,
   PlayPreview,
   QueuePreview,
   GetPreferencePreview,
   SetPreferencePreview,
-  DeletePreferencePreview
+  DeletePreferencePreview,
+  DeleteAllPreferencePreview
 };
