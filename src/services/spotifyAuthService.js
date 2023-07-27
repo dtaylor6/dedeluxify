@@ -1,11 +1,18 @@
+import { DeleteAllPreferencePreview } from './previewService';
+
 const SPOTIFY_TOKEN_NAME = 'spotify-auth-token';
 const PROFILE_PIC_NAME = 'profile-picture-url';
+const PREVIEW_NAME = 'preview';
 
 const SetToken = (token) => {
   window.localStorage.setItem(SPOTIFY_TOKEN_NAME, token);
 };
 
 const GetToken = () => {
+  if (GetPreview()) {
+    return 'preview';
+  }
+
   return window.localStorage.getItem(SPOTIFY_TOKEN_NAME);
 };
 
@@ -34,9 +41,25 @@ const ClearProfilePic = () => {
   window.localStorage.removeItem(PROFILE_PIC_NAME);
 };
 
+const SetPreview = () => {
+  window.localStorage.setItem(PREVIEW_NAME, JSON.stringify(true));
+};
+
+const GetPreview = () => {
+  const preview = JSON.parse(window.localStorage.getItem(PREVIEW_NAME));
+  return preview ? true : false;
+};
+
+const ClearPreview = () => {
+  window.localStorage.removeItem(PREVIEW_NAME);
+};
+
 const Logout = () => {
   ClearToken();
   ClearProfilePic();
+
+  ClearPreview();
+  DeleteAllPreferencePreview();
 };
 
 export {
@@ -47,5 +70,7 @@ export {
   SetProfilePic,
   GetProfilePic,
   ClearProfilePic,
-  Logout
+  Logout,
+  SetPreview,
+  GetPreview
 };

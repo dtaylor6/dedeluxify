@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { TransferPlayback } from '../../services/SpotifyPlaybackService';
-import { Logout } from '../../services/SpotifyAuthService';
+import { TransferPlayback } from '../../services/spotifyPlaybackService';
+import { GetPreview, Logout } from '../../services/spotifyAuthService';
+import PreviewPlayer from './PreviewPlayer';
+import previewAlbums from '../../services/previewAlbums';
 import {
   PlayerContainer,
   StyledTrackWrapper,
@@ -28,15 +30,15 @@ import MuteIcon from '../../../images/mute-icon.svg';
 const INIT_VOLUME = 50;
 
 const track = {
-  name: '',
+  name: 'Track',
   album: {
     images: [
-      { url: '' }
+      { url: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Redsquare.png' }
     ],
-    name: ''
+    name: ' A Album'
   },
   artists: [
-    { name: '' }
+    { name: 'Artist 1' }
   ]
 };
 
@@ -48,59 +50,75 @@ const SpotifyPlayer = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const script = document.createElement('script');
+    if (GetPreview()) {
+      // Use fake player without Spotify or database integration
+      console.log('Preview Mode');
+      const previewPlayer = new PreviewPlayer(setPaused, setTrack);
+      setPlayer(previewPlayer);
+      setActive(true);
+      previewPlayer.setAlbum(previewAlbums[0].tracks);
 
-    script.src = 'https://sdk.scdn.co/spotify-player.js';
-    script.async = true;
+      // Listen for fake playback event to change the current album
+      const eventHandler = (event) => {
+        previewPlayer.setAlbum(event.detail.album);
+      };
+      document.addEventListener('play', eventHandler);
+    }
+    else {
+      const script = document.createElement('script');
 
-    document.body.appendChild(script);
+      script.src = 'https://sdk.scdn.co/spotify-player.js';
+      script.async = true;
 
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const player = new window.Spotify.Player({
-        name: 'Web Playback SDK',
-        getOAuthToken: cb => { cb(props.access_token); },
-        volume: (INIT_VOLUME / 100)
-      });
+      document.body.appendChild(script);
 
-      setPlayer(player);
-
-      player.setName('Dedeluxify Player');
-
-      player.addListener('ready', ({ device_id }) => {
-        console.log('Ready with Device ID', device_id);
-        TransferPlayback(device_id);
-      });
-
-      player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);
-      });
-
-      player.addListener('player_state_changed', ( state => {
-        if (!state) {
-          return;
-        }
-
-        setTrack(state.track_window.current_track);
-        setPaused(state.paused);
-
-        player.getCurrentState().then( state => {
-          (!state)? setActive(false) : setActive(true);
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const player = new window.Spotify.Player({
+          name: 'Web Playback SDK',
+          getOAuthToken: cb => { cb(props.access_token); },
+          volume: (INIT_VOLUME / 100)
         });
-      }));
 
-      player.on('authentication_error', ({ message }) => {
-        console.error('Failed to authenticate:', message);
-        Logout();
-        navigate('/login');
-      });
+        setPlayer(player);
 
-      player.connect();
-    };
+        player.setName('Dedeluxify Player');
 
-    // Clean up external script after this effect
-    return () => {
-      document.body.removeChild(script);
-    };
+        player.addListener('ready', ({ device_id }) => {
+          console.log('Ready with Device ID', device_id);
+          TransferPlayback(device_id);
+        });
+
+        player.addListener('not_ready', ({ device_id }) => {
+          console.log('Device ID has gone offline', device_id);
+        });
+
+        player.addListener('player_state_changed', ( state => {
+          if (!state) {
+            return;
+          }
+
+          setTrack(state.track_window.current_track);
+          setPaused(state.paused);
+
+          player.getCurrentState().then( state => {
+            (!state)? setActive(false) : setActive(true);
+          });
+        }));
+
+        player.on('authentication_error', ({ message }) => {
+          console.error('Failed to authenticate:', message);
+          Logout();
+          navigate('/login');
+        });
+
+        player.connect();
+      };
+
+      // Clean up external script after this effect
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
   }, []);
 
   return (

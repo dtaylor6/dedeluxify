@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-import { GetAuthHeader } from './SpotifyAuthService';
+import { GetAuthHeader, GetPreview } from './spotifyAuthService';
+import {
+  SearchPreview,
+  PlayPreview,
+  QueuePreview
+} from './previewService';
+
 
 const url = PRODUCTION
   ? 'https://dedeluxify-backend.onrender.com'
@@ -27,6 +33,11 @@ const SearchAlbums = (search) => {
     return undefined;
   }
 
+  // Bypass backend and use preview search in preview mode
+  if (GetPreview()) {
+    return SearchPreview();
+  }
+
   return (
     axios
       .get(
@@ -44,6 +55,11 @@ const SearchAlbums = (search) => {
 };
 
 const PlayAlbum = (uri) => {
+  // Bypass backend and use preview playback in preview mode
+  if (GetPreview()) {
+    return PlayPreview(uri);
+  }
+
   return (
     axios
       .get(
@@ -58,6 +74,11 @@ const PlayAlbum = (uri) => {
 };
 
 const QueueAlbum = (uri) => {
+  // Bypass backend and use preview playback in preview mode
+  if (GetPreview()) {
+    return QueuePreview(uri);
+  }
+
   return (
     axios
       .get(

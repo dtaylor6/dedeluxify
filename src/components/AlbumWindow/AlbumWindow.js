@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { PlayAlbum, QueueAlbum } from '../../services/SpotifyPlaybackService';
+import { PlayAlbum, QueueAlbum } from '../../services/spotifyPlaybackService';
 
 import AlbumPreferenceForm from '../AlbumPreferenceForm/AlbumPreferenceForm';
 import {
