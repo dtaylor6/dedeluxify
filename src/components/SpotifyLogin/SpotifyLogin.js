@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from '../../services/SpotifyAuthService';
 
 import {
   LoginWrapper,
@@ -21,6 +22,7 @@ const previewLogin = (navigate) => {
 };
 
 const SpotifyLogin = () => {
+  Logout();
   const navigate = useNavigate();
   const url = PRODUCTION
     ? 'https://dedeluxify-backend.onrender.com/api/spotify/login'
