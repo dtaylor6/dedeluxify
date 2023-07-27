@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams, Navigate } from 'react-router-dom';
 
 import SpotifyLogin from '../SpotifyLogin/SpotifyLogin';
-import { SetToken, SetProfilePic } from '../../services/SpotifyAuthService';
+import { SetToken, SetProfilePic } from '../../services/spotifyAuthService';
 
 const LoginRedirect = () => {
   const [searchParams] = useSearchParams();

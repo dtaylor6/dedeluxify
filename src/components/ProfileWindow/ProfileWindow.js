@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Logout } from '../../services/SpotifyAuthService';
+import { Logout } from '../../services/spotifyAuthService';
 import { ProfileWindowWrapper, StyledButton } from './ProfileWindow.style';
 
 const Signout = (navigate) => {

@@ -4,8 +4,8 @@ import { Navigate } from 'react-router-dom';
 import WebsiteHeader from '../WebsiteHeader/WebsiteHeader';
 import SearchBar from '../SearchBar/SearchBar';
 import SpotifyPlayer from '../../components/SpotifyPlayer/SpotifyPlayer';
-import { GetToken } from '../../services/SpotifyAuthService';
-import { GetProfilePic } from '../../services/SpotifyAuthService';
+import { GetToken } from '../../services/spotifyAuthService';
+import { GetProfilePic } from '../../services/spotifyAuthService';
 
 const Home = () => {
   const token = GetToken();

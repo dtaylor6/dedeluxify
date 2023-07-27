@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { TransferPlayback } from '../../services/SpotifyPlaybackService';
-import { GetPreview, Logout } from '../../services/SpotifyAuthService';
+import { TransferPlayback } from '../../services/spotifyPlaybackService';
+import { GetPreview, Logout } from '../../services/spotifyAuthService';
 import PreviewPlayer from './PreviewPlayer';
 import {
   PlayerContainer,

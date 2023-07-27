@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GetAuthHeader } from './SpotifyAuthService';
+import { GetAuthHeader } from './spotifyAuthService';
 
 const url = PRODUCTION
   ? 'https://dedeluxify-backend.onrender.com'

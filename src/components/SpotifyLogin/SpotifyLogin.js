@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Logout } from '../../services/SpotifyAuthService';
+import { Logout } from '../../services/spotifyAuthService';
 
 import {
   LoginWrapper,
@@ -8,7 +8,7 @@ import {
   LoginButton,
   LoginDiv
 } from './SpotifyLogin.style';
-import { SetPreview } from '../../services/SpotifyAuthService';
+import { SetPreview } from '../../services/spotifyAuthService';
 import WebsiteLogo from '../WebsiteLogo/WebsiteLogo';
 import SpotifyLogo from '../../../images/Spotify_logo.svg';
 

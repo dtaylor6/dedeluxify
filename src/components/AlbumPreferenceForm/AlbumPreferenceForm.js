@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import useDatabaseResponse from '../../hooks/useDatabaseResponse';
-import { DeleteTrackPreferences, FetchTrackPreferences, PostTrackPreferences } from '../../services/DatabaseService';
+import { DeleteTrackPreferences, FetchTrackPreferences, PostTrackPreferences } from '../../services/databaseService';
 import {
   AlbumPreferenceFormWrapper,
   StyledAlbumPreferenceForm,
