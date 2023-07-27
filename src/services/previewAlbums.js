@@ -19,7 +19,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 1' }
-        ]
+        ],
+        uri: 11
       },
       {
         name: 'Track 2',
@@ -31,7 +32,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 1' }
-        ]
+        ],
+        uri: 12
       },
       {
         name: 'Track 3',
@@ -43,7 +45,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 1' }
-        ]
+        ],
+        uri: 13
       },
       {
         name: 'Track 4',
@@ -55,7 +58,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 1' }
-        ]
+        ],
+        uri: 14
       },
       {
         name: 'Track 5',
@@ -67,9 +71,9 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 1' }
-        ]
-      },
-
+        ],
+        uri: 15
+      }
     ]
   },
   {
@@ -92,7 +96,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 2' }
-        ]
+        ],
+        uri: 21
       },
       {
         name: 'Track 2',
@@ -104,7 +109,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 2' }
-        ]
+        ],
+        uri: 22
       },
       {
         name: 'Track 3',
@@ -116,7 +122,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 2' }
-        ]
+        ],
+        uri: 23
       },
       {
         name: 'Track 4',
@@ -128,7 +135,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 2' }
-        ]
+        ],
+        uri: 24
       },
       {
         name: 'Track 5',
@@ -140,7 +148,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 2' }
-        ]
+        ],
+        uri: 25
       }
     ]
   },
@@ -164,7 +173,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 3' }
-        ]
+        ],
+        uri: 31
       },
       {
         name: 'Track 2',
@@ -176,7 +186,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 3' }
-        ]
+        ],
+        uri: 32
       },
       {
         name: 'Track 3',
@@ -188,7 +199,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 3' }
-        ]
+        ],
+        uri: 33
       },
       {
         name: 'Track 4',
@@ -200,7 +212,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 3' }
-        ]
+        ],
+        uri: 34
       },
       {
         name: 'Track 5',
@@ -212,7 +225,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 3' }
-        ]
+        ],
+        uri: 35
       }
     ]
   },
@@ -236,7 +250,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 4' }
-        ]
+        ],
+        uri: 41
       },
       {
         name: 'Track 2',
@@ -248,7 +263,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 4' }
-        ]
+        ],
+        uri: 42
       },
       {
         name: 'Track 3',
@@ -260,7 +276,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 4' }
-        ]
+        ],
+        uri: 43
       },
       {
         name: 'Track 4',
@@ -272,7 +289,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 4' }
-        ]
+        ],
+        uri: 44
       },
       {
         name: 'Track 5',
@@ -284,7 +302,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 4' }
-        ]
+        ],
+        uri: 45
       }
     ]
   },
@@ -308,7 +327,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 5' }
-        ]
+        ],
+        uri: 51
       },
       {
         name: 'Track 2',
@@ -320,7 +340,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 5' }
-        ]
+        ],
+        uri: 52
       },
       {
         name: 'Track 3',
@@ -332,7 +353,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 5' }
-        ]
+        ],
+        uri: 53
       },
       {
         name: 'Track 4',
@@ -344,7 +366,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 5' }
-        ]
+        ],
+        uri: 54
       },
       {
         name: 'Track 5',
@@ -356,7 +379,8 @@ const previewAlbums = [
         },
         artists: [
           { name: 'Artist 5' }
-        ]
+        ],
+        uri: 55
       }
     ]
   }
