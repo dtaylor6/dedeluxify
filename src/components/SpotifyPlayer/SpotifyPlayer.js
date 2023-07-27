@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { TransferPlayback } from '../../services/spotifyPlaybackService';
 import { GetPreview, Logout } from '../../services/spotifyAuthService';
 import PreviewPlayer from './PreviewPlayer';
+import previewAlbums from '../../services/previewAlbums';
 import {
   PlayerContainer,
   StyledTrackWrapper,
@@ -55,14 +56,13 @@ const SpotifyPlayer = (props) => {
       const previewPlayer = new PreviewPlayer(setPaused, setTrack);
       setPlayer(previewPlayer);
       setActive(true);
+      previewPlayer.setAlbum(previewAlbums[0].tracks);
 
-      const fakeAlbum = [];
-      for (let i = 1; i <= 10; i +=1) {
-        const newTrack = structuredClone(track);
-        newTrack['name'] = newTrack['name'] + ' ' + i;
-        fakeAlbum.push(newTrack);
-      }
-      previewPlayer.setAlbum(fakeAlbum);
+      // Listen for fake playback event to change the current album
+      const eventHandler = (event) => {
+        previewPlayer.setAlbum(event.detail.album);
+      };
+      document.addEventListener('play', eventHandler);
     }
     else {
       const script = document.createElement('script');
