@@ -41,6 +41,10 @@ const SpotifyLogin = () => {
         <LoginButton onClick={() => previewLogin(navigate)}>
           <LoginSpan>Preview without logging in</LoginSpan>
         </LoginButton>
+        <div>
+          The Spotify integration is currently in <a href="https://developer.spotify.com/documentation/web-api/concepts/quota-modes" target="_blank" rel="noopener noreferrer">development mode</a>
+          . Each user that wishes to log in with their Spotify account must be added to the {'app\'s'} allowlist. If you wish to be added, send your first name and the email associated with your Spotify premium account to <a href='mailto:dedeluxify@gmail.com'>dedeluxify@gmail.com</a>
+        </div>
       </LoginDiv>
     </LoginWrapper>
   );
