@@ -29,6 +29,8 @@ const LoginButton = styled.button`
   text-align: center;
   border: 0.2rem solid black;
   border-radius: 0.25rem;
+  padding: 0.5rem;
+  background-color: white;
 
   &:hover {
     transition: background-color 0.5s ease;
@@ -38,9 +40,31 @@ const LoginButton = styled.button`
   }
 `;
 
+const MessageDiv = styled.div`
+  width: 29rem;
+  border: thin solid red;
+  border-radius: 0.25rem;
+  background-color: white;
+  text-align: left;
+  color: red;
+  margin: auto;
+  margin-top: 3rem;
+  padding: 0.5rem;
+
+  & > a {
+    color: red;
+  }
+`;
+
+const IconWrapper = styled.div`
+  text-align: center;
+`;
+
 export {
   LoginWrapper,
   LoginDiv,
   LoginSpan,
-  LoginButton
+  LoginButton,
+  MessageDiv,
+  IconWrapper
 };
