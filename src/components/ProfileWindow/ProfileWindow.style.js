@@ -8,8 +8,14 @@ const ProfileWindowWrapper = styled.div`
   top: 7rem;
   border: 0.1rem solid #191414;
   border-radius: 0.25rem;
-  padding: 0.25rem;
+  padding: 0.25rem 0;
   background-color: white;
+`;
+
+const ButtonWrapper = styled.div`
+  color: #191414;
+  background-color: white;
+  padding: 0.25rem;
 
   &:hover {
     transition: background-color 0.5s ease;
@@ -17,7 +23,7 @@ const ProfileWindowWrapper = styled.div`
     color: #F3F3F3;
   }
 
-  &:hover > * {
+  &:hover > button {
     transition: background-color 0.5s ease;
     background-color: #191414;
     color: #F3F3F3;
@@ -36,5 +42,6 @@ const StyledButton = styled.button`
 
 export {
   ProfileWindowWrapper,
+  ButtonWrapper,
   StyledButton
 };

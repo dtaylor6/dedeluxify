@@ -2,7 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Logout } from '../../services/spotifyAuthService';
-import { ProfileWindowWrapper, StyledButton } from './ProfileWindow.style';
+import { DeleteUser } from '../../services/databaseService';
+import {
+  ProfileWindowWrapper,
+  ButtonWrapper,
+  StyledButton
+} from './ProfileWindow.style';
 
 const Signout = (navigate) => {
   Logout();
@@ -16,7 +21,12 @@ const ProfileWindow = (props) => {
 
   return(
     <ProfileWindowWrapper >
-      <StyledButton onClick={() => Signout(navigate)}>Sign out</StyledButton>
+      <ButtonWrapper>
+        <StyledButton onClick={() => Signout(navigate)}>Sign out</StyledButton>
+      </ButtonWrapper>
+      <ButtonWrapper>
+        <StyledButton onClick={() => DeleteUser()}>Delete Data</StyledButton>
+      </ButtonWrapper>
     </ProfileWindowWrapper>
   );
 };
