@@ -4,7 +4,8 @@ import { GetAuthHeader, GetPreview } from './spotifyAuthService';
 import {
   GetPreferencePreview,
   SetPreferencePreview,
-  DeletePreferencePreview
+  DeletePreferencePreview,
+  DeleteAllPreferencePreview
 } from './previewService';
 
 const url = PRODUCTION
@@ -71,8 +72,27 @@ const DeleteTrackPreferences = (uri) => {
   );
 };
 
+// Deletes user information and all track preferences in the database
+const DeleteUser = () => {
+  // Bypass backend and delete all preferences in local storage
+  if (GetPreview()) {
+    return DeleteAllPreferencePreview();
+  }
+
+  return (
+    axios
+      .delete(
+        `${url}/api/trackPreferences/user`, {
+          params: {},
+          headers: GetAuthHeader()
+        }
+      )
+  );
+};
+
 export {
   FetchTrackPreferences,
   PostTrackPreferences,
-  DeleteTrackPreferences
+  DeleteTrackPreferences,
+  DeleteUser
 };
