@@ -27,10 +27,14 @@ const AlbumPreferenceForm = (props) => {
       preferenceStr += checkbox.checked ? '1' : '0';
     });
 
-    await PostTrackPreferences(albumUri, tracks.data.length, preferenceStr);
-    setButtonText('Save Preferences');
-    props.setButtonDisable(false);
-    props.setShowForm(false); // Close form
+    try {
+      await PostTrackPreferences(albumUri, tracks.data.length, preferenceStr);
+    }
+    finally {
+      setButtonText('Save Preferences');
+      props.setButtonDisable(false);
+      props.setShowForm(false); // Close form
+    }
   };
 
   return(!tracks.loading &&
@@ -78,10 +82,14 @@ const DeleteButton = (props) => {
     props.setButtonDisable(true);
     setButtonText('Deleting...');
 
-    await DeleteTrackPreferences(props.albumUri);
-    props.setButtonDisable(false);
-    setButtonText('Delete Preferences');
-    props.setShowForm(false); // Close form
+    try {
+      await DeleteTrackPreferences(props.albumUri);
+    }
+    finally {
+      props.setButtonDisable(false);
+      setButtonText('Delete Preferences');
+      props.setShowForm(false); // Close form
+    }
   };
 
   return(
