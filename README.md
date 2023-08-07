@@ -5,7 +5,7 @@
 </div>
 
 ## About
-This repository contains the source code for the dedeluxify React ap.
+This repository contains the source code for the dedeluxify React app.
 
 ### Technologies
 
