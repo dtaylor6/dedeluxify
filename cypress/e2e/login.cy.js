@@ -3,5 +3,4 @@ describe('template spec', () => {
     cy.visit('https://dedeluxify.com/login');
   });
 
-  // temp comment
 });
