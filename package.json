@@ -39,7 +39,9 @@
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
     "test": "jest",
-    "lint": "eslint ."
+    "test:e2e": "cypress run",
+    "lint": "eslint .",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
