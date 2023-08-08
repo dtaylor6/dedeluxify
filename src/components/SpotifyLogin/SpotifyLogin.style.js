@@ -45,7 +45,7 @@ const MessageDiv = styled.div`
   border: thin solid red;
   border-radius: 0.25rem;
   background-color: white;
-  text-align: left;
+  text-align: center;
   color: red;
   margin: auto;
   margin-top: 3rem;

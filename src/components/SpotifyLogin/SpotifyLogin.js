@@ -46,8 +46,7 @@ const SpotifyLogin = () => {
         </LoginButton>
         <MessageDiv>
           <IconWrapper><CautionIcon height="2rem" width="2rem" /></IconWrapper>
-          Spotify integration is currently in <a href="https://developer.spotify.com/documentation/web-api/concepts/quota-modes" target="_blank" rel="noopener noreferrer">development mode</a>
-          . Users that wish to log in with their Spotify account must be added to the {'app\'s'} allowlist. If you wish to be added, send your first name and the email associated with your Spotify premium account to <a href='mailto:dedeluxify@gmail.com'>dedeluxify@gmail.com</a>
+          This is the test website for <a href="https://dedeluxify.com/" target="_blank" rel="noopener noreferrer">dedeluxify.</a>
         </MessageDiv>
       </LoginDiv>
     </LoginWrapper>
