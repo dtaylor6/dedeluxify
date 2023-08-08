@@ -1,0 +1,3 @@
+[submodule "dedeluxify-backend"]
+	path = dedeluxify-backend
+	url = https://github.com/dtaylor6/dedeluxify-backend
