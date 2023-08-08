@@ -7,6 +7,10 @@
 ## About
 This repository contains the source code for the dedeluxify React app.
 
+### Note
+
+Spotify integration is currently in [development mode](https://developer.spotify.com/documentation/web-api/concepts/quota-modes). Users that wish to log in with their Spotify account must be added to the app's allowlist. If you wish to be added, send your first name and the email associated with your Spotify premium account to dedeluxify@gmail.com
+
 ### Technologies
 
 Full-stack JavaScript: Powered by Node.js
