@@ -7,7 +7,7 @@
 ## About
 This repository contains the source code for the dedeluxify React app.
 
-### Demo
+### Demo (Click GIF to enlarge)
 
 ![demo](https://github.com/dtaylor6/dedeluxify/assets/57015811/ec2e8740-0aaa-4b75-a3ab-91bb361b3856)
 
