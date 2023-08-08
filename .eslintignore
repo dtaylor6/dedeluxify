@@ -1,6 +1,10 @@
 .git/
 build/
 .env
+reactTests/__mocks__/
+reactTests/setupFile.js
 
 .eslintrc.js
 webpack.config.js
+babel.config.js
+jest.config.js
