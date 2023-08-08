@@ -8,3 +8,4 @@ reactTests/setupFile.js
 webpack.config.js
 babel.config.js
 jest.config.js
+cypress.config.js
