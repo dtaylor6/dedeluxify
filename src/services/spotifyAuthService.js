@@ -4,6 +4,16 @@ const SPOTIFY_TOKEN_NAME = 'spotify-auth-token';
 const PROFILE_PIC_NAME = 'profile-picture-url';
 const PREVIEW_NAME = 'preview';
 
+const GetBackendUrl = () => {
+  const url = __PRODUCTION__
+    ? 'https://dedeluxify-backend.onrender.com'
+    : 'https://test-dedeluxify-backend.onrender.com';
+
+  const localUrl = 'http://localhost:3003';
+
+  return __LOCAL__ ? localUrl : url;
+};
+
 const SetToken = (token) => {
   window.localStorage.setItem(SPOTIFY_TOKEN_NAME, token);
 };
@@ -63,6 +73,7 @@ const Logout = () => {
 };
 
 export {
+  GetBackendUrl,
   SetToken,
   GetToken,
   GetAuthHeader,

@@ -13,7 +13,7 @@ const config = (env, argv) => {
       static: path.resolve(__dirname, 'build'),
       compress: true,
       port: 3000,
-      proxy: argv.mode == 'development'
+      proxy: env.local == 'true'
         ? {
           '/api': {
             target: 'http://localhost:3003/',
@@ -42,7 +42,8 @@ const config = (env, argv) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-          PRODUCTION: JSON.stringify(argv.mode === 'production')
+          __PRODUCTION__: JSON.stringify(argv.mode === 'production'),
+          __LOCAL__: JSON.stringify(env.local === 'true')
       }),
     ]
   }

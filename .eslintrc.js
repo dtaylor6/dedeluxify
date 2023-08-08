@@ -53,5 +53,5 @@ module.exports = {
       'version': 'detect'
     }
   },
-  'globals': { 'PRODUCTION': true }
+  'globals': { '__PRODUCTION__': true, '__LOCAL__': true }
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GetAuthHeader, GetPreview } from './spotifyAuthService';
+import { GetAuthHeader, GetPreview, GetBackendUrl } from './spotifyAuthService';
 import {
   SearchPreview,
   PlayPreview,
@@ -8,9 +8,7 @@ import {
 } from './previewService';
 
 
-const url = PRODUCTION
-  ? 'https://dedeluxify-backend.onrender.com'
-  : 'http://localhost:3003';
+const url = GetBackendUrl();
 
 const TransferPlayback = (device_id) => {
   return (
