@@ -35,12 +35,12 @@ const SpotifyLogin = () => {
       <WebsiteLogo marginTop="2rem" marginBottom="7rem" />
       <LoginDiv>
         <h1>Log in</h1>
-        <LoginButton onClick={() => spotifyLogin(url)}>
+        <LoginButton onClick={() => spotifyLogin(url)} id="spotify-login-button">
           <SpotifyLogo />
           <LoginSpan>Log in with Spotify</LoginSpan>
         </LoginButton>
         <br/>
-        <LoginButton onClick={() => previewLogin(navigate)}>
+        <LoginButton onClick={() => previewLogin(navigate)} id="preview-login-button">
           <LoginSpan>Preview without logging in</LoginSpan>
         </LoginButton>
         <MessageDiv>
