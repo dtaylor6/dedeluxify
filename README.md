@@ -11,7 +11,7 @@ This repository contains the source code for the dedeluxify React app.
 
 ![demo](https://github.com/dtaylor6/dedeluxify/assets/57015811/ec2e8740-0aaa-4b75-a3ab-91bb361b3856)
 
-The only version of The Byrd's 1966 album "Fifth Dimension" available on Spotify includes 6 bonus tracks. By referencing the Discogs master release, dedeluxify automatically excludes extra tracks from the queue. Then, track preferences are set so that album playback always skips to the third track "Mr. Spaceman"
+The only version of The Byrd's 1966 album "Fifth Dimension" available on Spotify includes 6 bonus tracks. By referencing the Discogs master release, dedeluxify automatically excludes extra tracks from the queue. Finally, track preferences are set so that album playback always skips to the third track "Mr. Spaceman"
 
 ### Note
 
