@@ -15,7 +15,7 @@ The only version of The Byrd's 1966 album "Fifth Dimension" available on Spotify
 
 ### Note
 
-Spotify integration is currently in [development mode](https://developer.spotify.com/documentation/web-api/concepts/quota-modes). Users that wish to log in with their Spotify account must be added to the app's allowlist. If you wish to be added, send your first name and the email associated with your Spotify premium account to dedeluxify@gmail.com. There is also a preview mode available without Spotify login so that user's can demo the website.
+Spotify integration is currently in [development mode](https://developer.spotify.com/documentation/web-api/concepts/quota-modes). Users that wish to log in with their Spotify account must be added to the app's allowlist. If you wish to be added, send your first name and the email associated with your Spotify premium account to dedeluxify@gmail.com. Alternatively, a preview mode is available so that user's may demo the website without signing into Spotify.
 
 ### Technologies
 
