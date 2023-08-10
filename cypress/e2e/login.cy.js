@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('authorization', () => {
   it('visit login page', () => {
     cy.visit('/login');
   });
@@ -17,5 +17,18 @@ describe('template spec', () => {
       cy.get('input#login-password');
       cy.get('button#login-button');
     });
+  });
+
+  it('log into spotify page', () => {
+    cy.visit('/login');
+    cy.get('#spotify-login-button').click();
+    cy.origin('https://accounts.spotify.com', () => {
+      cy.get('input#login-username').type(Cypress.env('spotify_email'));
+      cy.get('input#login-password').type(Cypress.env('spotify_password'));
+      cy.get('button#login-button').click();
+    });
+
+    // Should redirect back to main website page
+    cy.url().should('contain', '/');
   });
 });

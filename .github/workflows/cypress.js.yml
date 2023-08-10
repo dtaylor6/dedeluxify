@@ -19,3 +19,6 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
           browser: chrome
+        env:
+          CYPRESS_spotify_email: ${{secrets.CYPRESS_SPOTIFY_EMAIL}}
+          CYPRESS_spotify_password: ${{secrets.CYPRESS_SPOTIFY_PASSWORD}}

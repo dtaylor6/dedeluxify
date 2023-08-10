@@ -147,3 +147,4 @@ About
 cypress/downloads/
 cypress/videos/
 cypress/screenshots/
+cypress.env.json
