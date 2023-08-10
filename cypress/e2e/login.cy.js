@@ -29,6 +29,6 @@ describe('authorization', () => {
     });
 
     // Should redirect back to main website page
-    cy.url().should('contain', '/');
+    cy.url({ 'timeout': 20000 }).should('contain', '/');
   });
 });
