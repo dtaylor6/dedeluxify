@@ -8,6 +8,7 @@ on:
 
 jobs:
   cypress-run:
+    environment: test-e2e
     runs-on: ubuntu-22.04
     container: cypress/browsers:node16.16.0-chrome107-ff107-edge
     steps:
@@ -20,5 +21,5 @@ jobs:
           wait-on: 'http://localhost:3000'
           browser: chrome
         env:
-          CYPRESS_spotify_email: ${{env.CYPRESS_SPOTIFY_EMAIL}}
-          CYPRESS_spotify_password: ${{env.CYPRESS_SPOTIFY_PASSWORD}}
+          CYPRESS_spotify_email: $CYPRESS_SPOTIFY_EMAIL
+          CYPRESS_spotify_password: $CYPRESS_SPOTIFY_PASSWORD
