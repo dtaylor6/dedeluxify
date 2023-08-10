@@ -23,12 +23,13 @@ describe('authorization', () => {
     cy.visit('/login');
     cy.get('#spotify-login-button').click();
     cy.origin('https://accounts.spotify.com', () => {
-      cy.get('input#login-username').type(Cypress.env('spotify_email'));
-      cy.get('input#login-password').type(Cypress.env('spotify_password'));
+      cy.get('input#login-username').type(Cypress.env('spotify_email'), { log: false });
+      cy.get('input#login-password').type(Cypress.env('spotify_password'), { log: false });
       cy.get('button#login-button').click();
     });
 
     // Should redirect back to main website page
-    cy.get('#spotify-player');
+    cy.wait(5000);
+    cy.get('#spotify-player', { timeout: 20000 });
   });
 });
