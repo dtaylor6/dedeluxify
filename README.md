@@ -4,8 +4,11 @@
 
 </div>
 
+This repository contains the codebase for the dedeluxify React app. The source code for the Express backend app can be found [here](https://github.com/dtaylor6/dedeluxify-backend).
+
 ## About
-This repository contains the source code for the dedeluxify React app.
+
+Dedeluxify is a Spotify webplayer that skips extraneous tracks during album playback. Extraneous tracks are tracks that were not originally part of an album's initial release, such as demos, outtakes, and live versions. Often, these tracks are tacked on to the end of a deluxe or remastered album release. When the original album isn't uploaded to Spotify by the record label, a user has to usually skip through extraneous tracks when playing an album. By referencing the Discogs master releases, dedeluxify only queues the original tracks during album playback. Furthermore, a user can save their own preferences to override what tracks are played or not. For instance, a listener may always want to skip a particular song in an album. This allows a Spotify user to custom tailor album playback without cluttering their playlists with albums. 
 
 ### Demo (Click GIF to enlarge)
 
