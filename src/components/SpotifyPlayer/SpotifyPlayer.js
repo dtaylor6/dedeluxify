@@ -123,7 +123,7 @@ const SpotifyPlayer = (props) => {
 
   return (
     <>
-      <PlayerContainer>
+      <PlayerContainer id="spotify-player">
         <TrackWrapper
           isPaused={isPaused}
           isActive={isActive}
