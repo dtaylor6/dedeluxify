@@ -29,7 +29,6 @@ describe('authorization', () => {
     });
 
     // Should redirect back to main website page
-    cy.wait(5000);
     cy.get('#spotify-player', { timeout: 20000 });
   });
 });
