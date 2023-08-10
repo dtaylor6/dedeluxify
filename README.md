@@ -8,13 +8,13 @@ This repository contains the codebase for the dedeluxify React app. The source c
 
 ## About
 
-Dedeluxify is a Spotify webplayer that excludes extraneous tracks from album playback. Extraneous tracks are tracks that were not originally part of an album's initial release, such as demos, outtakes, and live versions. Often, these tracks are tacked on to the end of a deluxe or remastered album release. When the original album isn't uploaded to Spotify by the record label, a user has to manually skip through extraneous tracks when playing an album. In some cases, the number of tracks are doubled or even tripled for an album's deluxe reissue. By referencing the Discogs master releases, dedeluxify only queues the original tracks during album playback. Furthermore, a user can save their own preferences to override what tracks are played or not. For instance, a listener may always want to skip a particular song in an album. This allows a Spotify user to custom tailor album playback without cluttering their playlists with albums. 
+Dedeluxify is a Spotify webplayer that excludes extraneous tracks from album playback. Extraneous tracks are tracks that were not originally part of an album's initial release, such as demos, outtakes, and live versions. Often, these tracks are tacked on to the end of a deluxe or remastered album release. When the original album isn't uploaded to Spotify, a listener stuck with the rerelase has to manually skip through extra tracks when playing an album. In some cases, the extra tracks may even double an album's length. By referencing the Discogs master releases, dedeluxify only queues the original tracks during album playback. Additionally, a user can save their own preferences to set what tracks are played in an album. For instance, a listener may always want to skip a particular song. This allows a Spotify user to customize playback without filling their playlist section with albums. Ultimately, dedeluxify aims to declutter music streaming. 
 
 ### Demo (Click GIF to enlarge)
 
 ![demo](https://github.com/dtaylor6/dedeluxify/assets/57015811/ec2e8740-0aaa-4b75-a3ab-91bb361b3856)
 
-The only version of The Byrd's 1966 album "Fifth Dimension" available on Spotify includes 6 bonus tracks. By referencing the Discogs master release, dedeluxify automatically excludes extra tracks from the queue. Finally, track preferences are set so that album playback always skips to the third track "Mr. Spaceman"
+The only version of The Byrd's 1966 album "Fifth Dimension" available on Spotify includes 6 bonus tracks. By referencing the Discogs master release, dedeluxify automatically excludes these extra tracks from queue. Finally, track preferences are set so that album playback always skips to the third track "Mr. Spaceman"
 
 ### Note
 
@@ -26,7 +26,7 @@ Full-stack JavaScript: Powered by Node.js
 
 Postgres: Data storage for saved user preferences
 
-Express: Backend RESTful API
+Express: Backend Express app and RESTful API
 
 Discogs API: Album master release metadata
 
