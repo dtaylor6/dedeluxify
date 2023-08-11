@@ -1,3 +1,9 @@
+const networkFails = [];
+
+const saveNetworkFails = () => {
+  cy.writeFile('cypress/fixtures/networkFails.json', networkFails);
+};
+
 describe('querying', () => {
   before(() => {
     cy.visit('/login');
@@ -24,4 +30,25 @@ describe('querying', () => {
     cy.url().should('contain', 'localhost');
     cy.get('#spotify-player');
   });
+
+  it('Get album window', () => {
+    cy.intercept('*', (request) => {
+      request.continue(response => {
+        if(response.statusMessage !== 'OK') {
+          networkFails.push({ request, response });
+        }
+      });
+    });
+
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    // const searchBar = cy.get('input[type="search"]');
+    // searchBar.within(() => {
+    //   cy.get('div button:first').click();
+    // });
+  });
+});
+
+after(() => {
+  saveNetworkFails();
 });

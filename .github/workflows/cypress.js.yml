@@ -39,3 +39,10 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-network-logs
+          path: cypress/fixtures/networkFails.json
