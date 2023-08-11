@@ -6,6 +6,14 @@ const saveNetworkFails = () => {
 
 describe('querying', () => {
   before(() => {
+    cy.intercept('*', (request) => {
+      request.continue(response => {
+        if(response.statusMessage !== 'OK') {
+          networkFails.push({ request, response });
+        }
+      });
+    });
+
     cy.visit('/login');
     cy.get('#spotify-login-button').click();
 
@@ -32,14 +40,6 @@ describe('querying', () => {
   });
 
   it('Get album window', () => {
-    cy.intercept('*', (request) => {
-      request.continue(response => {
-        if(response.statusMessage !== 'OK') {
-          networkFails.push({ request, response });
-        }
-      });
-    });
-
     cy.url().should('contain', 'localhost');
     cy.get('#spotify-player');
     // const searchBar = cy.get('input[type="search"]');
