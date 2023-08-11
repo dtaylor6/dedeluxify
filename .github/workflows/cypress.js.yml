@@ -19,7 +19,7 @@ jobs:
         with:
           start: npm start
           wait-on: 'http://localhost:3000'
-          browser: chrome
+          browser: electron
         env:
           CYPRESS_spotify_email: ${{secrets.CYPRESS_SPOTIFY_EMAIL}}
           CYPRESS_spotify_password: ${{secrets.CYPRESS_SPOTIFY_PASSWORD}}
