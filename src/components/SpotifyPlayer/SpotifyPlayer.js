@@ -35,7 +35,7 @@ const track = {
     images: [
       { url: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Redsquare.png' }
     ],
-    name: ' A Album'
+    name: 'A Album'
   },
   artists: [
     { name: 'Artist 1' }
