@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GetAuthHeader, GetPreview } from './spotifyAuthService';
+import { GetAuthHeader, GetPreview, GetBackendUrl } from './spotifyAuthService';
 import {
   GetPreferencePreview,
   SetPreferencePreview,
@@ -8,9 +8,7 @@ import {
   DeleteAllPreferencePreview
 } from './previewService';
 
-const url = PRODUCTION
-  ? 'https://dedeluxify-backend.onrender.com'
-  : 'http://localhost:3003';
+const url = GetBackendUrl();
 
 const FetchTrackPreferences = (uri) => {
   // Bypass backend and get track preferences in local storage

@@ -10,7 +10,7 @@ import {
   MessageDiv,
   IconWrapper
 } from './SpotifyLogin.style';
-import { SetPreview } from '../../services/spotifyAuthService';
+import { SetPreview, GetBackendUrl } from '../../services/spotifyAuthService';
 import WebsiteLogo from '../WebsiteLogo/WebsiteLogo';
 import SpotifyLogo from '../../../images/Spotify_logo.svg';
 import CautionIcon from '../../../images/caution.svg';
@@ -27,21 +27,20 @@ const previewLogin = (navigate) => {
 const SpotifyLogin = () => {
   Logout();
   const navigate = useNavigate();
-  const url = PRODUCTION
-    ? 'https://dedeluxify-backend.onrender.com/api/spotify/login'
-    : 'http://localhost:3003/api/spotify/login';
+  const backendUrl = GetBackendUrl();
+  const url = `${backendUrl}/api/spotify/login`;
 
   return (
     <LoginWrapper>
       <WebsiteLogo marginTop="2rem" marginBottom="7rem" />
       <LoginDiv>
         <h1>Log in</h1>
-        <LoginButton onClick={() => spotifyLogin(url)}>
+        <LoginButton onClick={() => spotifyLogin(url)} id="spotify-login-button">
           <SpotifyLogo />
           <LoginSpan>Log in with Spotify</LoginSpan>
         </LoginButton>
         <br/>
-        <LoginButton onClick={() => previewLogin(navigate)}>
+        <LoginButton onClick={() => previewLogin(navigate)} id="preview-login-button">
           <LoginSpan>Preview without logging in</LoginSpan>
         </LoginButton>
         <MessageDiv>

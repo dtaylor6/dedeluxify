@@ -84,7 +84,7 @@ const Results = forwardRef((props, ref) => {
   const showBorder = props.results && (props.results.length > 0);
 
   return (
-    <StyledResults showBorder={showBorder} showResults={props.showResults} ref={ref}>
+    <StyledResults showBorder={showBorder} showResults={props.showResults} ref={ref} id='search-results'>
       {props.album && <AlbumWindow album={props.album} setAlbum={props.setAlbum} />}
       {
         props.results

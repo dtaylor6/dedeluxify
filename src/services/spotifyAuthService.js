@@ -4,8 +4,21 @@ const SPOTIFY_TOKEN_NAME = 'spotify-auth-token';
 const PROFILE_PIC_NAME = 'profile-picture-url';
 const PREVIEW_NAME = 'preview';
 
+const GetBackendUrl = () => {
+  const url = __PRODUCTION__
+    ? 'https://dedeluxify-backend.onrender.com'
+    : 'https://test-dedeluxify-backend.onrender.com';
+
+  const localUrl = 'http://localhost:3003';
+
+  return __LOCAL__ ? localUrl : url;
+};
+
 const SetToken = (token) => {
-  window.localStorage.setItem(SPOTIFY_TOKEN_NAME, token);
+  const d = new Date();
+  d.setTime(d.getTime() + (60*60*1000)); // Expires in 1 hour
+  let expires = 'expires='+ d.toUTCString();
+  document.cookie = SPOTIFY_TOKEN_NAME + '=' + token + ';' + expires + ';path=/';
 };
 
 const GetToken = () => {
@@ -13,7 +26,21 @@ const GetToken = () => {
     return 'preview';
   }
 
-  return window.localStorage.getItem(SPOTIFY_TOKEN_NAME);
+  let name = SPOTIFY_TOKEN_NAME + '=';
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+
+  // Token cookie was not found
+  return '';
 };
 
 const GetAuthHeader = () => {
@@ -26,7 +53,14 @@ const GetAuthHeader = () => {
 };
 
 const ClearToken = () => {
-  window.localStorage.removeItem(SPOTIFY_TOKEN_NAME);
+  const cookies = document.cookie.split(';');
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf('=');
+    const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  }
 };
 
 const SetProfilePic = (url) => {
@@ -63,6 +97,7 @@ const Logout = () => {
 };
 
 export {
+  GetBackendUrl,
   SetToken,
   GetToken,
   GetAuthHeader,
