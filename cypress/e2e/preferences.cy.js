@@ -1,3 +1,4 @@
+const testBackendUrl = 'https://test-dedeluxify-backend.onrender.com';
 let spotifyToken;
 
 describe('authorization', () => {
@@ -30,7 +31,6 @@ describe('authorization', () => {
   });
 });
 
-
 describe('searching for albums', () => {
   beforeEach(() => {
     cy.setCookie('spotify-auth-token', spotifyToken.value);
@@ -48,6 +48,16 @@ describe('searching for albums', () => {
     cy.get('div#album-div').should('not.exist');
     cy.get('input[type="search"]').type('thriller');
     cy.get('div#search-results').children('div:first').should('exist');
+  });
+
+  it('search for nonsense', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('flksdfjlksdjfsldkfjsdlkfjsdlkfjsdlkfjlsdjfsdlkfj');
+
+    // No results should pop up
+    cy.get('div#search-results').children('div:first').should('not.exist');
   });
 
   it('album window pops up', () => {
@@ -85,5 +95,22 @@ describe('searching for albums', () => {
 
     // Album div should now be closed
     cy.get('div#album-div').should('not.exist');
+  });
+});
+
+describe('album preferences', () => {
+  beforeEach(() => {
+    cy.request({
+      url: `${testBackendUrl}/api/trackPreferences/user`,
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${spotifyToken.value}` }
+    });
+    cy.setCookie('spotify-auth-token', spotifyToken.value);
+    cy.visit('/');
+  });
+
+  it('at home page', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
   });
 });
