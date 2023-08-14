@@ -32,6 +32,7 @@ describe('authorization', () => {
 });
 
 describe('searching for albums', () => {
+  // Set auth token before each test
   beforeEach(() => {
     cy.setCookie('spotify-auth-token', spotifyToken.value);
     cy.visit('/');
@@ -99,6 +100,7 @@ describe('searching for albums', () => {
 });
 
 describe('album preferences', () => {
+  // Clear all user preferences and set auth token before each test
   beforeEach(() => {
     cy.request({
       url: `${testBackendUrl}/api/trackPreferences/user`,
@@ -109,8 +111,109 @@ describe('album preferences', () => {
     cy.visit('/');
   });
 
-  it('at home page', () => {
+  it('search for album', () => {
     cy.url().should('contain', 'localhost');
     cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('nevermind');
+    cy.get('div#search-results').children('div:first').should('exist');
+  });
+
+  it('get track preference', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('nevermind');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').within(($div) => {
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('label').contains('Smells Like Teen Spirit').should('exist');
+    });
+  });
+
+  it('all tracks should initially be enabled', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('nevermind');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').within(($div) => {
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('label').contains('Smells Like Teen Spirit').should('exist');
+      cy.get('input[type="checkbox"]').each(($input, index, $list) => {
+        cy.wrap($input).should('be.checked');
+      });
+    });
+  });
+
+  it('set album preference', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('nevermind');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').within(($div) => {
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('label').contains('Smells Like Teen Spirit').should('exist');
+
+      // Disable first three tracks
+      cy.get('input[type="checkbox"]').each(($input, index, $list) => {
+        cy.wrap($input).should('be.checked');
+        if (index < 3) {
+          cy.wrap($input).uncheck();
+        }
+      });
+      cy.get('button').contains('Save Preferences').click();
+
+      // Retrieve new preferences from database and ensure correctness
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('input[type="checkbox"]').each(($input, index, $list) => {
+        if (index < 3) {
+          cy.wrap($input).should('not.be.checked');
+        }
+        else {
+          cy.wrap($input).should('be.checked');
+        }
+      });
+    });
+  });
+
+  it('delete album preference', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('nevermind');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').within(($div) => {
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('label').contains('Smells Like Teen Spirit').should('exist');
+
+      // Disable first three tracks
+      cy.get('input[type="checkbox"]').each(($input, index, $list) => {
+        cy.wrap($input).should('be.checked');
+        if (index < 3) {
+          cy.wrap($input).uncheck();
+        }
+      });
+      cy.get('button').contains('Save Preferences').click();
+
+      // Retrieve new preferences from database and ensure correctness
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('input[type="checkbox"]').each(($input, index, $list) => {
+        if (index < 3) {
+          cy.wrap($input).should('not.be.checked');
+        }
+        else {
+          cy.wrap($input).should('be.checked');
+        }
+      });
+
+      // Delete the preferences and ensure all tracks are reenabled
+      cy.get('button').contains('Delete Preferences').click();
+      cy.get('button').contains('Set Tracks').click();
+      cy.get('input[type="checkbox"]').each(($input, index, $list) => {
+        cy.wrap($input).should('be.checked');
+      });
+    });
   });
 });
