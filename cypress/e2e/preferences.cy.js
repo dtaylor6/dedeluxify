@@ -1,36 +1,39 @@
-const networkFails = [];
+let spotifyToken;
 
-const saveNetworkFails = () => {
-  cy.writeFile('cypress/fixtures/networkFails.json', networkFails);
-};
+describe('authorization', () => {
+  it('visit login page', () => {
+    cy.visit('/login');
+  });
 
-describe('querying', () => {
-  before(() => {
-    cy.intercept('*', (request) => {
-      request.continue(response => {
-        if(response.statusMessage !== 'OK') {
-          networkFails.push({ request, response });
-        }
-      });
-    });
+  it('log in to preview', () => {
+    cy.visit('/login');
+    cy.get('#preview-login-button').click();
+    cy.get('input[type="search"]');
+  });
 
+  it('log into spotify page', () => {
     cy.visit('/login');
     cy.get('#spotify-login-button').click();
-
-    // Redirect to Spotify login page
     cy.origin('https://accounts.spotify.com', () => {
-      const email = Cypress.env('spotify_email');
-      const password = Cypress.env('spotify_password');
-      cy.get('input#login-username').type(email, { log: false });
-      cy.get('input#login-password').type(password, { log: false });
+      cy.get('input#login-username').type(Cypress.env('spotify_email'), { log: false });
+      cy.get('input#login-password').type(Cypress.env('spotify_password'), { log: false });
       cy.get('button#login-button').click();
     });
 
-    cy.url().should('contain', 'localhost');
+    // Should redirect back to main website page
     cy.get('#spotify-player');
+    cy.getCookie('spotify-auth-token')
+      .should('exist')
+      .then((c) => {
+        spotifyToken = c;
+      });
   });
+});
 
+
+describe('querying', () => {
   beforeEach(() => {
+    cy.setCookie('spotify-auth-token', spotifyToken.value);
     cy.visit('/');
   });
 
@@ -47,8 +50,4 @@ describe('querying', () => {
     //   cy.get('div button:first').click();
     // });
   });
-});
-
-after(() => {
-  saveNetworkFails();
 });
