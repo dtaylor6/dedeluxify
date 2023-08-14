@@ -31,23 +31,59 @@ describe('authorization', () => {
 });
 
 
-describe('querying', () => {
+describe('searching for albums', () => {
   beforeEach(() => {
     cy.setCookie('spotify-auth-token', spotifyToken.value);
     cy.visit('/');
   });
 
-  it('At home page', () => {
+  it('at home page', () => {
     cy.url().should('contain', 'localhost');
     cy.get('#spotify-player');
   });
 
-  it('Get album window', () => {
+  it('search for album', () => {
     cy.url().should('contain', 'localhost');
     cy.get('#spotify-player');
-    // const searchBar = cy.get('input[type="search"]');
-    // searchBar.within(() => {
-    //   cy.get('div button:first').click();
-    // });
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('thriller');
+    cy.get('div#search-results').children('div:first').should('exist');
+  });
+
+  it('album window pops up', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('thriller');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').should('exist');
+  });
+
+  it('play album', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('thriller');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').within(($div) => {
+      cy.get('button').contains('Play').click();
+    });
+
+    // Album div should now be closed
+    cy.get('div#album-div').should('not.exist');
+  });
+
+  it('queue album', () => {
+    cy.url().should('contain', 'localhost');
+    cy.get('#spotify-player');
+    cy.get('div#album-div').should('not.exist');
+    cy.get('input[type="search"]').type('thriller');
+    cy.get('div#search-results').children('div:first').click();
+    cy.get('div#album-div').within(($div) => {
+      cy.get('button').contains('Queue').click();
+    });
+
+    // Album div should now be closed
+    cy.get('div#album-div').should('not.exist');
   });
 });

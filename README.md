@@ -4,7 +4,7 @@
 
 </div>
 
-This repository contains the codebase for the dedeluxify React app. The source code for the Express backend app can be found [here](https://github.com/dtaylor6/dedeluxify-backend).
+This repository contains the codebase for the dedeluxify React app. The source code for the backend Express app can be found [here](https://github.com/dtaylor6/dedeluxify-backend).
 
 ## About
 
@@ -26,7 +26,7 @@ Full-stack JavaScript: Powered by Node.js
 
 Postgres: Data storage for saved user preferences
 
-Express: Backend Express app and RESTful API
+Express: Backend Express app with RESTful API
 
 Discogs API: Album master release metadata
 
