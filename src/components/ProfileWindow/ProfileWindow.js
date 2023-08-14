@@ -31,7 +31,7 @@ const ProfileWindow = (props) => {
   const navigate = useNavigate();
 
   return(
-    <ProfileWindowWrapper >
+    <ProfileWindowWrapper>
       <ButtonWrapper>
         <StyledButton disabled={disabled} onClick={() => Signout(navigate)}>
           Sign out
@@ -39,7 +39,7 @@ const ProfileWindow = (props) => {
       </ButtonWrapper>
       <ButtonWrapper>
         <StyledButton disabled={disabled} onClick={() => DeleteData(setDisabled)}>
-          Delete Data
+          Delete data
         </StyledButton>
       </ButtonWrapper>
     </ProfileWindowWrapper>
