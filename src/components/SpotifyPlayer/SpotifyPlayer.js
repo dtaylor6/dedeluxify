@@ -50,9 +50,12 @@ const SpotifyPlayer = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Use fake player without Spotify or database integration
     if (GetPreview()) {
-      // Use fake player without Spotify or database integration
-      console.log('Preview Mode');
+      if(__PRODUCTION__) {
+        console.log('Preview Mode');
+      }
+
       const previewPlayer = new PreviewPlayer(setPaused, setTrack);
       setPlayer(previewPlayer);
       setActive(true);
